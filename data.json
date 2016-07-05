@@ -1,0 +1,390 @@
+{
+    "schemas": [
+        {
+            "id": "rioxx",
+            "version": "2.0",
+            "url": "http://www.rioxx.net/profiles/v2-0-final/",
+            "fields": [
+                {
+                    "id": "free_to_read",
+                    "field": "ali:free_to_read",
+                    "label": "Free to read",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "access_level"
+                        }
+                    ]
+                },
+                {
+                    "id": "license_ref",
+                    "field": "ali:license_ref",
+                    "label": "License Ref",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "access_level"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "license_condition"
+                        }
+                    ]
+                },
+                {
+                    "id": "coverage",
+                    "field": "dc:coverage",
+                    "label": "Coverage",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "coverage"
+                        }
+                    ]
+                },
+                {
+                    "id": "description",
+                    "field": "dc:description",
+                    "label": "Description",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "description"
+                        }
+                    ]
+                },
+                {
+                    "id": "format",
+                    "field": "dc:format",
+                    "label": "Format",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "format"
+                        }
+                    ]
+                },
+                {
+                    "id": "identifier",
+                    "field": "dc:identifier",
+                    "label": "Identifier",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "resource_identifier"
+                        }
+                    ]
+                },
+                {
+                    "id": "language",
+                    "field": "dc:language",
+                    "label": "Language",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "language"
+                        }
+                    ]
+                },
+                {
+                    "id": "publisher",
+                    "field": "dc:publisher",
+                    "label": "Publisher",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publisher"
+                        }
+                    ]
+                },
+                {
+                    "id": "relation",
+                    "field": "dc:relation",
+                    "label": "Relation",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "dataset_reference"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "relation"
+                        }
+                    ]
+                },
+                {
+                    "id": "source",
+                    "field": "dc:source",
+                    "label": "Source",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "source"
+                        }
+                    ]
+                },
+                {
+                    "id": "subject",
+                    "field": "dc:subject",
+                    "label": "Subject",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "subject"
+                        }
+                    ]
+                },
+                {
+                    "id": "title",
+                    "field": "dc:title",
+                    "label": "Title",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "title"
+                        }
+                    ]
+                },
+                {
+                    "id": "date_accepted",
+                    "field": "dcterms:dateAccepted",
+                    "label": "Date Accepted",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publication_date",
+                            "note": "If publication date not known, publication date can be derived from acceptance date"
+                        }
+                    ]
+                },
+                {
+                    "id": "apc",
+                    "field": "rioxxterms:apc",
+                    "label": "APC"
+                },
+                {
+                    "id": "author",
+                    "field": "rioxxterms:author",
+                    "label": "Author",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "creator"
+                        }
+                    ]
+                },
+                {
+                    "id": "contributor",
+                    "field": "rioxxterms:contributor",
+                    "label": "Contributor",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "contributor"
+                        }
+                    ]
+                },
+                {
+                    "id": "project",
+                    "field": "rioxxterms:project",
+                    "label": "Project",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "project_identifier"
+                        }
+                    ]
+                },
+                {
+                    "id": "publication_date",
+                    "field": "rioxxterms:publication_date",
+                    "label": "Publication Date",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publication_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "type",
+                    "field": "rioxxterms:type",
+                    "label": "Type",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publication_type"
+                        }
+                    ]
+                },
+                {
+                    "id": "version",
+                    "field": "rioxxterms:version",
+                    "label": "Version",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publication_version"
+                        }
+                    ]
+                },
+                {
+                    "id": "version_of_record",
+                    "field": "rioxxterms:version_of_record",
+                    "label": "Version of Record",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "publication_reference"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "openaire",
+            "version": "3.0",
+            "url": "https://guidelines.openaire.eu/en/latest/literature/index.html",
+            "fields": [
+                {
+                    "id": "title",
+                    "field": "dc:title",
+                    "label": "Title",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_title.html"
+                },
+                {
+                    "id": "creator",
+                    "field": "dc:creator",
+                    "label": "Creator",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_creator.html"
+                },
+                {
+                    "id": "project_identifier",
+                    "field": "dc:relation",
+                    "label": "Project Identifier",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_projectid.html"
+                },
+                {
+                    "id": "access_level",
+                    "field": "dc:rights",
+                    "label": "Access Level",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_accesslevel.html"
+                },
+                {
+                    "id": "license_condition",
+                    "field": "dc:rights",
+                    "label": "License Condition",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_licensecondition.html"
+                },
+                {
+                    "id": "embargo_end_date",
+                    "field": "dc:date",
+                    "label": "Embargo End Date",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_embargoenddate.html"
+                },
+                {
+                    "id": "alternative_identifier",
+                    "field": "dc:relation",
+                    "label": "Alternative Identifier",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_alternativeidentifier.html"
+                },
+                {
+                    "id": "publication_reference",
+                    "field": "dc:relation",
+                    "label": "Publication Reference",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationreference.html"
+                },
+                {
+                    "id": "dataset_reference",
+                    "field": "dc:relation",
+                    "label": "Dataset Reference",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_datasetreference.html"
+                },
+                {
+                    "id": "subject",
+                    "field": "dc:subject",
+                    "label": "Subject",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_subject.html"
+                },
+                {
+                    "id": "description",
+                    "field": "dc:description",
+                    "label": "Description",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_description.html"
+                },
+                {
+                    "id": "publisher",
+                    "field": "dc:publisher",
+                    "label": "Publisher",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publisher.html"
+                },
+                {
+                    "id": "contributor",
+                    "field": "dc:contributor",
+                    "label": "Contributor",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_contributor.html"
+                },
+                {
+                    "id": "publication_date",
+                    "field": "dc:date",
+                    "label": "Publication Date",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationdate.html"
+                },
+                {
+                    "id": "publication_type",
+                    "field": "dc:type",
+                    "label": "Publication Type",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationtype.html"
+                },
+                {
+                    "id": "publication_version",
+                    "field": "dc:type",
+                    "label": "Publication Version",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationversion.html"
+                },
+                {
+                    "id": "format",
+                    "field": "dc:format",
+                    "label": "Format",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_format.html"
+                },
+                {
+                    "id": "resource_identifier",
+                    "field": "dc:identifier",
+                    "label": "Resource Identifier",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_resourceidentifier.html"
+                },
+                {
+                    "id": "source",
+                    "field": "dc:source",
+                    "label": "Source",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_source.html"
+                },
+                {
+                    "id": "language",
+                    "field": "dc:language",
+                    "label": "Language",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_language.html"
+                },
+                {
+                    "id": "relation",
+                    "field": "dc:relation",
+                    "label": "Relation",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_relation.html"
+                },
+                {
+                    "id": "coverage",
+                    "field": "dc:coverage",
+                    "label": "Coverage",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_coverage.html"
+                },
+                {
+                    "id": "audience",
+                    "field": "dc:audience",
+                    "label": "Audience",
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_audience.html"
+                }
+            ]
+        }
+    ]
+}
