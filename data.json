@@ -3,6 +3,7 @@
         {
             "id": "rioxx",
             "version": "2.0",
+            "label": "RCUK RIOXX Application Profile Version 2.0 Final",
             "url": "http://www.rioxx.net/profiles/v2-0-final/",
             "fields": [
                 {
@@ -12,22 +13,32 @@
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "access_level"
+                            "id": "access_level",
+                            "note": "Set Access Level to openAccess if within start/end dates"
+                        }, 
+                        {
+                            "schema": "hefce",
+                            "id": "free_to_read"
                         }
                     ]
                 },
                 {
-                    "id": "license_ref",
+                   "id": "license_ref",
                     "field": "ali:license_ref",
                     "label": "License Ref",
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "access_level"
+                            "id": "license_condition"
                         },
                         {
-                            "schema": "openaire",
-                            "id": "license_condition"
+                            "schema": "casrai",
+                            "id": "license_type",
+                            "note": "With vocab mapping"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "license_ref"
                         }
                     ]
                 },
@@ -94,6 +105,10 @@
                         {
                             "schema": "openaire",
                             "id": "publisher"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_publisher_name"
                         }
                     ]
                 },
@@ -102,10 +117,6 @@
                     "field": "dc:relation",
                     "label": "Relation",
                     "mappings": [
-                        {
-                            "schema": "openaire",
-                            "id": "dataset_reference"
-                        },
                         {
                             "schema": "openaire",
                             "id": "relation"
@@ -142,6 +153,10 @@
                         {
                             "schema": "openaire",
                             "id": "title"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_article_title"
                         }
                     ]
                 },
@@ -151,16 +166,26 @@
                     "label": "Date Accepted",
                     "mappings": [
                         {
-                            "schema": "openaire",
-                            "id": "publication_date",
-                            "note": "If publication date not known, publication date can be derived from acceptance date"
+                            "schema": "casrai",
+                            "id": "ja_final_acceptance_date"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "acceptance_date"
                         }
                     ]
                 },
                 {
                     "id": "apc",
                     "field": "rioxxterms:apc",
-                    "label": "APC"
+                    "label": "APC",
+                    "mappings": [
+                        {
+                            "schema": "casrai",
+                            "id": "apc_payment_adjustments",
+                            "note": "Convert vocab to string"
+                        }
+                    ]
                 },
                 {
                     "id": "author",
@@ -169,7 +194,23 @@
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "creator"
+                            "id": "creator",
+                            "note": "Name part only"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_name",
+                            "note": "Name part only"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_id_type",
+                            "note": "Derive from HTTP URI"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_id",
+                            "note": "Derive from HTTP URI"
                         }
                     ]
                 },
@@ -191,7 +232,13 @@
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "project_identifier"
+                            "id": "project_identifier",
+                            "note": "Map funder_name to Funder and project ID to ProjectID"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "apc_source_grant",
+                            "note": "Map project ID"
                         }
                     ]
                 },
@@ -202,6 +249,14 @@
                     "mappings": [
                         {
                             "schema": "openaire",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_publication_date"
+                        },
+                        {
+                            "schema": "hefce",
                             "id": "publication_date"
                         }
                     ]
@@ -214,6 +269,10 @@
                         {
                             "schema": "openaire",
                             "id": "publication_type"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "output_type"
                         }
                     ]
                 },
@@ -224,7 +283,12 @@
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "publication_version"
+                            "id": "publication_version",
+                            "note": "With vocabulary mapping"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "version_of_deposited_file"
                         }
                     ]
                 },
@@ -235,7 +299,12 @@
                     "mappings": [
                         {
                             "schema": "openaire",
-                            "id": "publication_reference"
+                            "id": "resource_identifier"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "doi",
+                            "note": "Applies only if VoR value is a DOI"
                         }
                     ]
                 }
@@ -244,145 +313,796 @@
         {
             "id": "openaire",
             "version": "3.0",
+            "label": "OpenAIRE Guidelines for Literature Repositories",
             "url": "https://guidelines.openaire.eu/en/latest/literature/index.html",
             "fields": [
                 {
                     "id": "title",
                     "field": "dc:title",
                     "label": "Title",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_title.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_title.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "title"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_article_title"
+                        }
+                    ]
                 },
                 {
                     "id": "creator",
                     "field": "dc:creator",
                     "label": "Creator",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_creator.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_creator.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "author",
+                            "note": "Name part only"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_name",
+                            "note": "Name part only"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_id_type",
+                            "note": "Derive from HTTP URI"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "app_author_id",
+                            "note": "Derive from HTTP URI"
+                        }
+                    ]
                 },
                 {
                     "id": "project_identifier",
                     "field": "dc:relation",
                     "label": "Project Identifier",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_projectid.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_projectid.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "project",
+                            "note": "Map Funder to funder_name and ProjectID to project ID"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "apc_source_grant",
+                            "note": "Map ProjectID"
+                        }
+                    ]
                 },
                 {
                     "id": "access_level",
                     "field": "dc:rights",
                     "label": "Access Level",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_accesslevel.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_accesslevel.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "free_to_read",
+                            "note": "If Access Level is openAccess"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "free_to_read",
+                            "note": "If Access Level is openAccess"
+                        }
+                    ]
                 },
                 {
                     "id": "license_condition",
                     "field": "dc:rights",
                     "label": "License Condition",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_licensecondition.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_licensecondition.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "license_ref",
+                            "note": "If License Condition is CC"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "license_type",
+                            "note": "Convert string to vocab"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "license_ref",
+                            "note": "If License Condition is CC"
+                        }
+                    ]
                 },
                 {
                     "id": "embargo_end_date",
                     "field": "dc:date",
                     "label": "Embargo End Date",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_embargoenddate.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_embargoenddate.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "free_to_read",
+                            "note": "Assuming free to read after embargo ends"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "embargo_end_date"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "free_to_read",
+                            "note": "Assuming free to read after embargo ends"
+                        }
+                    ]
                 },
                 {
                     "id": "alternative_identifier",
                     "field": "dc:relation",
                     "label": "Alternative Identifier",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_alternativeidentifier.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_alternativeidentifier.html",
+                    "mappings": [
+                        {
+                            "schema": "casrai",
+                            "id": "ja_pmc_id",
+                            "note": "If Alternative Identifier scheme is pmid"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_issn",
+                            "note": "If Alternative Identifier scheme is eissn or pissn"
+                        }
+                    ]
                 },
                 {
                     "id": "publication_reference",
                     "field": "dc:relation",
                     "label": "Publication Reference",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationreference.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationreference.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "relation"
+                        }
+                    ]
                 },
                 {
                     "id": "dataset_reference",
                     "field": "dc:relation",
                     "label": "Dataset Reference",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_datasetreference.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_datasetreference.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "relation"
+                        }
+                    ]
                 },
                 {
                     "id": "subject",
                     "field": "dc:subject",
                     "label": "Subject",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_subject.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_subject.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "subject"
+                        }
+                    ]
                 },
                 {
                     "id": "description",
                     "field": "dc:description",
                     "label": "Description",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_description.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_description.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "description"
+                        }
+                    ]
                 },
                 {
                     "id": "publisher",
                     "field": "dc:publisher",
                     "label": "Publisher",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publisher.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publisher.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "publisher"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_publisher_name"
+                        }
+                    ]
                 },
                 {
                     "id": "contributor",
                     "field": "dc:contributor",
                     "label": "Contributor",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_contributor.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_contributor.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "contributor"
+                        }
+                    ]
                 },
                 {
                     "id": "publication_date",
                     "field": "dc:date",
                     "label": "Publication Date",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationdate.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationdate.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_publication_date"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "publication_date"
+                        }
+                    ]
                 },
                 {
                     "id": "publication_type",
                     "field": "dc:type",
                     "label": "Publication Type",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationtype.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationtype.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "type"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "output_type"
+                        }
+                    ]
                 },
                 {
                     "id": "publication_version",
                     "field": "dc:type",
                     "label": "Publication Version",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationversion.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_publicationversion.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "version",
+                            "note": "With vocabulary mapping"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "version_of_deposited_file",
+                            "note": "With vocabulary mapping"
+                        }
+                    ]
                 },
                 {
                     "id": "format",
                     "field": "dc:format",
                     "label": "Format",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_format.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_format.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "format"
+                        }
+                    ]
                 },
                 {
                     "id": "resource_identifier",
                     "field": "dc:identifier",
                     "label": "Resource Identifier",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_resourceidentifier.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_resourceidentifier.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "version_of_record",
+                            "note": "If Resource Identifier includes a DOI URL (or ISSN/ISBN?)"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_pmc_id",
+                            "note": "If Resource Identiier includes a PMID URL"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_doi",
+                            "note": "If Resource Identifier includes a DOI URL"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_issn",
+                            "note": "If Resource Identifier includes a ISSN URL"
+                        }
+                    ]
                 },
                 {
                     "id": "source",
                     "field": "dc:source",
                     "label": "Source",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_source.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_source.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "source"
+                        }
+                    ]
                 },
                 {
                     "id": "language",
                     "field": "dc:language",
                     "label": "Language",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_language.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_language.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "language"
+                        }
+                    ]
                 },
                 {
                     "id": "relation",
                     "field": "dc:relation",
                     "label": "Relation",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_relation.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_relation.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "relation"
+                        }
+                    ]
                 },
                 {
                     "id": "coverage",
                     "field": "dc:coverage",
                     "label": "Coverage",
-                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_coverage.html"
+                    "url": "https://guidelines.openaire.eu/en/latest/literature/field_coverage.html",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "coverage"
+                        }
+                    ]
                 },
                 {
                     "id": "audience",
                     "field": "dc:audience",
                     "label": "Audience",
                     "url": "https://guidelines.openaire.eu/en/latest/literature/field_audience.html"
+                }
+            ]
+        },
+        {
+            "id": "casrai",
+            "label": "Open Access APC Report",
+            "url": "https://guidelines.openaire.eu/en/latest/literature/index.html",
+            "fields": [
+                {
+                    "id": "app_date",
+                    "label": "Internal OA Cost Application/Date",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Date"
+                },
+                {
+                    "id": "app_author_name",
+                    "label": "Internal OA Cost Application/Author Name",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_Name",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "creator"
+                        },
+                        {
+                            "schema": "rioxx",
+                            "id": "author",
+                            "note": "Name part only"
+                        }
+                    ]
+                },
+                {
+                    "id": "app_author_id_type",
+                    "labek": "Internal OA Cost Application/Author ID Type",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_ID_Type",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "author",
+                            "note": "Build HTTP URI"
+                        }
+                    ]
+                },
+                {
+                    "id": "app_author_id",
+                    "label": "Internal OA Cost Application/Author ID",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_ID",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "author",
+                            "note": "Build HTTP URI"
+                        }
+                    ]
+                },
+                {
+                    "id": "app_author_organisational_unit",
+                    "label": "Internal OA Cost Application/Author Organisational Unit",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_Organisational_Unit"
+                },
+                {
+                    "id": "app_estimated_charge",
+                    "label": "Internal OA Cost Application/Estimated Charge",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Estimated_Charge"
+                },
+                {
+                    "id": "app_currency",
+                    "label": "Internal OA Cost Application/Currency",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/Currency"
+                },
+                {
+                    "id": "app_external_notes",
+                    "label": "Internal OA Cost Application/External Notes",
+                    "url": "http://dictionary.casrai.org/Internal_OA_Cost_Application/External_Notes"
+                },
+                {
+                    "id": "ja_pmc_id",
+                    "label": "Journal Article/PMC ID",
+                    "url": "http://dictionary.casrai.org/Journal_Article/PMC_ID",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "alternative_identifier"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_doi",
+                    "label": "Journal Article/DOI",
+                    "url": "http://dictionary.casrai.org/Journal_Article/DOI",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "version_of_record"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "resource_identiier"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_issn",
+                    "label": "Journal Article/ISSN",
+                    "url": "http://dictionary.casrai.org/Journal_Article/ISSN",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "alternative_identifier"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_publisher_name",
+                    "label": "Journal Article/Publisher Name",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Publisher_Name",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "publisher"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "publisher"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_publisher_id_type",
+                    "label": "Journal Article/Publisher ID Type",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Publisher_ID_Type"
+                },
+                {
+                    "id": "ja_publisher_id",
+                    "label": "Journal Article/Publisher ID",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Publisher_ID"
+                },
+                {
+                    "id": "ja_journal",
+                    "label": "Journal Article/Journal",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Journal"
+                },
+                {
+                    "id": "ja_article_title",
+                    "label": "Journal Article/Article Title",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Article_Title",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "title"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "title"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_final_acceptance_date",
+                    "label": "Journal Article/Final Acceptance Date",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Final_Acceptance_Date",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "date_accepted"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "acceptance_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_publication_date",
+                    "label": "Journal Article/Publication Date",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Publication_Date",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "publication_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "ja_provisional_acceptance_date",
+                    "label": "Journal Article/Provisional Acceptance Date",
+                    "url": "http://dictionary.casrai.org/Journal_Article/Provisional_Acceptance_Date"
+                },
+                {
+                    "id": "apc_licence_type",
+                    "label": "APC Payment/Licence Type",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Licence_Type",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "license_ref",
+                            "note": "Convert vocab to CC URL"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "license_condition",
+                            "note": "Convert vocab to string"
+                        },
+                        {
+                            "schema": "hefce",
+                            "id": "license_ref",
+                            "note": "Convert vocab to CC URL"
+                        }
+                    ]
+                },
+                {
+                    "id": "apc_correct_licence_applied",
+                    "label": "APC Payment/Correct Licence Applied",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Correct_Licence_Applied"
+                },
+                {
+                    "id": "apc_publication_problems",
+                    "label": "APC Payment/Publication Problems",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Publication_Problems"
+                },
+                {
+                    "id": "apc_publication_problem_description",
+                    "label": "APC Payment/Publication Problem Description",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Publication_Problem_Description"
+                },
+                {
+                    "id": "apc_date",
+                    "label": "APC Payment/Date",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Date"
+                },
+                {
+                    "id": "apc_amount_paid",
+                    "label": "APC Payment/Amount Paid",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Amount_Paid"
+                },
+                {
+                    "id": "apc_vat_ammount",
+                    "label": "APC Payment/VAT Amount",
+                    "url": "http://dictionary.casrai.org/APC_Payment/VAT_Amount"
+                },
+                {
+                    "id": "apc_currency",
+                    "label": "APC Payment/Currency",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Currency"
+                },
+                {
+                    "id": "apc_added_costs_component",
+                    "label": "APC Payment/Added Costs Component",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Added_Costs_Component"
+                },
+                {
+                    "id": "apc_payment_adjustments",
+                    "label": "APC Payment/Payment Adjustments",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Payment_Adjustments",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "apc",
+                            "note": "Convert string to vocab"
+                        }
+                    ]
+                },
+                {
+                    "id": "apc_source_funds",
+                    "label": "APC Payment/Source Fund(s)",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Source_Fund(s)"
+                },
+                {
+                    "id": "apc_source_grants",
+                    "label": "APC Payment/Source Grant(s)",
+                    "url": "http://dictionary.casrai.org/APC_Payment/Source_Grant(s)",
+                    "mappings": [
+                        {
+                            "schema": "openaire",
+                            "id": "project_identifier",
+                            "note": "Map value to ProjectID"
+                        },
+                        {
+                            "schema": "rioxx",
+                            "id": "project",
+                            "note": "Map value to project ID"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "hefce",
+            "version": "October 2014",
+            "label": "Open access in the post-2014 Research Excellence Framework: information and audit requirementsz",
+            "url": "https://www.hefce.ac.uk/media/hefce/content/What,we,do/Research/infrastructure/Open,Access/Open%20access%20in%20the%20post-2014%20REF%20information%20and%20audit%20requirements%20udate.pdf",
+            "fields": [
+                {
+                    "id": "output_type",
+                    "label": "Output type",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "type"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "publication_type"
+                        }
+                    ]
+                },
+                {
+                    "id": "acceptance_date",
+                    "label": "Acceptance date",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "date_accepted"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_final_acceptance_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "technical_exception",
+                    "label": "Technical exception"
+                },
+                {
+                    "id": "version_of_deposited_file",
+                    "label": "Version of deposited file",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "version"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "publication_version",
+                            "note": "With vocabulary mapping"
+                        }
+                    ]
+                },
+                {
+                    "id": "deposit_date",
+                    "label": "Deposit date"
+                },
+                {
+                    "id": "deposit_exception",
+                    "label": "Deposit exception"
+                },
+                {
+                    "id": "publication_date",
+                    "label": "Publication date",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "publication_date"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "ja_publication_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "embargo_end_date",
+                    "label": "Embargo end date",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "free_to_read",
+                            "note": "Assuming free to read after embargo ends"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "access_level",
+                            "note": "Set to embargoedAccess or openAccess (assuming open access after embargo ends)"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "embargo_end_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "free_to_read",
+                    "label": "Free to read",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "free_to_read"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "access_level",
+                            "note": "Set Access Level to openAccess if within start/end dates"
+                        } 
+                    ]
+                },
+                {
+                    "id": "free_to_download",
+                    "label": "Free to download"
+                },
+                {
+                    "id": "in_text_search",
+                    "label": "In-text search"
+                },
+                {
+                    "id": "access_exception",
+                    "label": "Access exception"
+                },
+                {
+                    "id": "other_exception",
+                    "label": "Other exception"
                 }
             ]
         }
