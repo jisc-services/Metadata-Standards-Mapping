@@ -688,7 +688,7 @@
         {
             "id": "casrai",
             "label": "Open Access APC Report",
-            "url": "https://guidelines.openaire.eu/en/latest/literature/index.html",
+            "url": "http://dictionary.casrai.org/Open_Access_APC_Report",
             "fields": [
                 {
                     "id": "app_date",
