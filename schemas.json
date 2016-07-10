@@ -33,7 +33,7 @@
                         },
                         {
                             "schema": "casrai",
-                            "id": "license_type",
+                            "id": "apc_licence_type",
                             "note": "With vocab mapping"
                         },
                         {
@@ -237,7 +237,7 @@
                         },
                         {
                             "schema": "casrai",
-                            "id": "apc_source_grant",
+                            "id": "apc_source_grants",
                             "note": "Map project ID"
                         }
                     ]
@@ -303,7 +303,7 @@
                         },
                         {
                             "schema": "casrai",
-                            "id": "doi",
+                            "id": "ja_doi",
                             "note": "Applies only if VoR value is a DOI"
                         }
                     ]
@@ -373,7 +373,7 @@
                         },
                         {
                             "schema": "casrai",
-                            "id": "apc_source_grant",
+                            "id": "apc_source_grants",
                             "note": "Map ProjectID"
                         }
                     ]
@@ -409,7 +409,7 @@
                         },
                         {
                             "schema": "casrai",
-                            "id": "license_type",
+                            "id": "apc_licence_type",
                             "note": "Convert string to vocab"
                         },
                         {
@@ -615,7 +615,7 @@
                         {
                             "schema": "casrai",
                             "id": "ja_pmc_id",
-                            "note": "If Resource Identiier includes a PMID URL"
+                            "note": "If Resource Identifier includes a PMID URL"
                         },
                         {
                             "schema": "casrai",
@@ -777,7 +777,7 @@
                         },
                         {
                             "schema": "openaire",
-                            "id": "resource_identiier"
+                            "id": "resource_identifier"
                         }
                     ]
                 },
@@ -1070,6 +1070,25 @@
                         {
                             "schema": "openaire",
                             "id": "embargo_end_date"
+                        }
+                    ]
+                },
+                {
+                    "id": "license_ref",
+                    "label": "License Ref",
+                    "mappings": [
+                        {
+                            "schema": "rioxx",
+                            "id": "license_ref"
+                        },
+                        {
+                            "schema": "openaire",
+                            "id": "license_condition"
+                        },
+                        {
+                            "schema": "casrai",
+                            "id": "apc_licence_type",
+                            "note": "With vocab mapping"
                         }
                     ]
                 },
