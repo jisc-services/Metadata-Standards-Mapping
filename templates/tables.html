@@ -21,7 +21,7 @@
     <div class="tab-content">
         {% for schema in schemas %}
             <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{schema.id}}">
-                <table class="table table-striped table-schema">
+                <table class="table table-schema">
                     {% for field in schema.fields %}
                         <tr>
                             <td>
@@ -64,7 +64,7 @@
                                             </div>
                                         </div>
                                     {% empty %}
-                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}} btn-schema-element-empty">
+                                        <div class="hidden btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}} btn-schema-element-empty">
                                             <div class="schema-element-title">&nbsp;</div>
                                             <div class="schema-element-field">&nbsp;</div>
                                         </div>
