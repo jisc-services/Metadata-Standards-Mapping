@@ -34,18 +34,22 @@
 }
 .btn-schema-element-rioxx
 {
+    border: 1px solid red;
     border-left: 10px solid red;
 }
 .btn-schema-element-openaire
 {
+    border: 1px solid orange;
     border-left: 10px solid orange;
 }
 .btn-schema-element-casrai
 {
+    border: 1px solid blue;
     border-left: 10px solid blue;
 }
 .btn-schema-element-hefce
 {
+    border: 1px solid green;
     border-left: 10px solid green;
 }
 .btn-schema-element-empty
