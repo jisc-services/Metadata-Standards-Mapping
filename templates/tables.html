@@ -14,22 +14,20 @@
 
     <ul class="nav nav-tabs" role="tablist">
         {% for schema in schemas %}
-            <li role="presentation" class="schema_tab schema_tab_{{schema.id}}{% if forloop.first %} active{% endif %}"><a href="#{{schema.id}}" aria-controls="{{schema.id}}" role="tab" data-toggle="tab">{{schema.shorttitle}}</a></li>
+            <li role="presentation" class="tab-schema tab-schema-{{schema.id}}{% if forloop.first %} active{% endif %}"><a href="#{{schema.id}}" aria-controls="{{schema.id}}" role="tab" data-toggle="tab">{{schema.shorttitle}}</a></li>
         {% endfor %}
     </ul>
 
     <div class="tab-content">
         {% for schema in schemas %}
             <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{schema.id}}">
-                <table class="table schema_table">
+                <table class="table table-striped table-schema">
                     {% for field in schema.fields %}
                         <tr>
                             <td>
-                                <div class="schema_element schema_element_{{schema.id}} schema_element_{{schema.id}}_{{field.id}}" style="height:100%">
-                                    <div class="schema_element_header">
-                                        <div class="schema_element_title">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
-                                        <div class="schema_element_field">{{field.field}}&nbsp;</div>
-                                    </div>
+                                <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
+                                    <div class="schema-element-title">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
+                                    <div class="schema-element-field">{{field.field}}&nbsp;</div>
                                 </div>
                             </td>
                             {% for tgt_schema, tgt_fields in field.mappings.items %}
@@ -38,18 +36,26 @@
                                         {% if not forloop.first %}
                                             <br/>
                                         {% endif %}
-                                        <div class="schema_element schema_element_{{tgt_schema}} schema_element_{{tgt_schema}}_{{tgt_field.id}} schema_btn" {% if tgt_fields|length = 1 %}style="height:{% widthratio 100 tgt_fields|length 1 %}%"{% endif %} data-toggle="modal" data-target="#{{tgt_schema}}_{{tgt_field.id}}_modal">
-                                            <div class="schema_element_header">
-                                                <div class="schema_element_title">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
-                                                <div class="schema_element_field">{{tgt_field.field}}&nbsp;</div>
-                                            </div>
+                                        <div class="btn btn-default btn-schema-element btn-schema-element-{{tgt_schema}}" data-toggle="modal" data-target="#{{tgt_schema}}_{{tgt_field.id}}_modal">
+                                            <div class="schema-element-title">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
+                                            <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
                                         </div>
                                         <div class="modal fade" id="{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{tgt_schema}}_{{tgt_field.id}}_modal">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Mapping notes</h4>
+                                                        <div class="modal-title">
+                                                            <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
+                                                                <div class="schema-element-title">{{field.label}}</div>
+                                                                <div class="schema-element-field">{{field.field}}&nbsp;</div>
+                                                            </div>
+                                                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                                            <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}}">
+                                                                <div class="schema-element-title">{{tgt_field.label}}</div>
+                                                                <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     <div class="modal-body">
                                                         {{tgt_field.note}}
@@ -58,11 +64,9 @@
                                             </div>
                                         </div>
                                     {% empty %}
-                                        <div class="schema_element schema_element_empty schema_element_{{tgt_schema}}" style="height:100%">
-                                            <div class="schema_element_header">
-                                                <div class="schema_element_title">&nbsp;</div>
-                                                <div class="schema_element_field">&nbsp;</div>
-                                            </div>
+                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}} btn-schema-element-empty">
+                                            <div class="schema-element-title">&nbsp;</div>
+                                            <div class="schema-element-field">&nbsp;</div>
                                         </div>
                                     {% endfor %}
                                 </td>
