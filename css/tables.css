@@ -1,0 +1,73 @@
+.tab-content {
+    margin-top: 30px;
+}
+.schema_tab_rioxx {
+    border-bottom: 5px solid red;
+}
+.schema_tab_openaire {
+    border-bottom: 5px solid orange;
+}
+.schema_tab_casrai {
+    border-bottom: 5px solid blue;
+}
+.schema_tab_hefce {
+    border-bottom: 5px solid green;
+}
+.schema_table
+{
+    width: auto;
+}
+.schema_element
+{
+    color: #333;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px 12px;
+    width: 220px;
+    overflow: hidden;
+}
+.schema_element_empty
+{
+    background-color: #eee;
+    opacity: 0.2;
+}
+.schema_element_rioxx
+{
+    border-left: 10px solid red;
+}
+.schema_element_openaire
+{
+    border-left: 10px solid orange;
+}
+.schema_element_casrai
+{
+    border-left: 10px solid blue;
+}
+.schema_element_hefce
+{
+    border-left: 10px solid green;
+}
+.schema_element_title
+{
+    font-weight: bolder;
+    white-space: nowrap;
+}
+.schema_element_field
+{
+    font-size: 80%;
+    font-family: monospace;
+}
+.schema_element_header
+{
+    float: left;
+    margin-right: 10px;
+}
+.schema_btn
+{
+    cursor: pointer; 
+}
+.schema_btn:hover
+{
+    background-color: #efefef;
+}
