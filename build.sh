@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source venv/bin/activate
 rm -rf build
 mkdir -p build/css
