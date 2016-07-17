@@ -36,11 +36,11 @@
                                         {% if not forloop.first %}
                                             <br/>
                                         {% endif %}
-                                        <div class="btn btn-default btn-schema-element btn-schema-element-{{tgt_schema}}" data-toggle="modal" data-target="#{{tgt_schema}}_{{tgt_field.id}}_modal">
+                                        <div class="btn btn-default btn-schema-element btn-schema-element-{{tgt_schema}}" data-toggle="modal" data-target="#{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
                                             <div class="schema-element-title">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
                                             <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
                                         </div>
-                                        <div class="modal fade" id="{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{tgt_schema}}_{{tgt_field.id}}_modal">
+                                        <div class="modal fade" id="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
