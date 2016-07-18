@@ -14,7 +14,12 @@
                     {
                         "schema": "openaire",
                         "id": "access_level",
-                        "note": "Set Access Level to openAccess if within start/end dates"
+                        "note": "The presence of an ali:free_to_read element can be used to infer that Open Access to the resource is possible, provided that the end_date attribute is not a date in the past.",
+                        "examples": [
+                            [ "<ali:free_to_read start_date=\"2013-03-28\" end_date=\"2014-04-30\"/>", "no mapping" ],
+                            [ "<ali:free_to_read start_date=\"2013-03-28\"/>", "<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>" ],
+                            [ "<ali:free_to_read/>", "<dc:rights>info:eu-repo/semantics/openAccess</dc:rights>" ]
+                        ]
                     }, 
                     {
                         "schema": "hefce",

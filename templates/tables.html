@@ -41,24 +41,45 @@
                                             <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
                                         </div>
                                         <div class="modal fade" id="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
-                                            <div class="modal-dialog" role="document">
+                                            <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                         <div class="modal-title">
-                                                            <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
-                                                                <div class="schema-element-title">{{field.label}}</div>
-                                                                <div class="schema-element-field">{{field.field}}&nbsp;</div>
-                                                            </div>
-                                                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                                                            <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}}">
-                                                                <div class="schema-element-title">{{tgt_field.label}}</div>
-                                                                <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-body">
-                                                        {{tgt_field.note}}
+                                                        <p>{{tgt_field.note}}</p>
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
+                                                                            <div class="schema-element-title">{{field.label}}</div>
+                                                                            <div class="schema-element-field">{{field.field}}&nbsp;</div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}}">
+                                                                            <div class="schema-element-title">{{tgt_field.label}}</div>
+                                                                            <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for example in tgt_field.examples %}
+                                                                    <tr>
+                                                                        <td>
+                                                                            <pre>{{example.0}}</pre>
+                                                                        </td>
+                                                                        <td>
+                                                                            <pre>{{example.1}}</pre>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %} 
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>

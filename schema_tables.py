@@ -36,9 +36,9 @@ for s in data:
                 sid = m['schema']
                 fid = m['id']
                 field = flookup[sid][fid]
-                for k,v in m.items():
-                    field[k] = v
-                mappings[sid].append(field)
+                for k,v in field.items():
+                    m[k] = v
+                mappings[sid].append(m)
         f['mappings'] = mappings
 
 import django
