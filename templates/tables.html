@@ -25,6 +25,18 @@
     <div class="tab-content">
         {% for schema in schemas %}
             <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{schema.id}}">
+                <div class="panel-group" id="schema-info-{{schema.id}}" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="schema-info-{{schema.id}}-heading">
+                            <h4 class="panel-title">
+                                <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#schema-info-{{schema.id}}" href="#schema-info-{{schema.id}}-collapse" aria-expanded="true" aria-controls="schema-info-{{schema.id}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Schema Details</a>
+                            </h4>
+                        </div>
+                        <div id="schema-info-{{schema.id}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-info-{{schema.id}}-heading">
+                            {% include "includes/schema.html" with schema=schema %}
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-schema">
                     {% for field in schema.fields %}
                         <tr>
@@ -53,4 +65,14 @@
 
 </div>
 
+{% endblock %}
+
+{% block js %}
+<script>
+    $('.collapse').on('shown.bs.collapse', function(){
+        $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+    }).on('hidden.bs.collapse', function(){
+        $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+    });
+</script>
 {% endblock %}
