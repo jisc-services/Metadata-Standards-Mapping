@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <title>Mapping Jisc Standards</title>
+    <title>Mapping metadata schemas</title>
 {% endblock %}
 
 {% block head %}
@@ -12,9 +12,9 @@
 
 <div class="container">
 
-    <h1>Mapping Jisc Standards</h1>
+    <h1>Mapping UK repository-related metadata schemas</h1>
 
-    <p>Choose a tab to compare standards:</p>
+    <p>Choose a tab to compare schemas:</p>
 
     <ul class="nav nav-tabs" role="tablist">
         {% for schema in schemas %}
@@ -29,10 +29,7 @@
                     {% for field in schema.fields %}
                         <tr>
                             <td>
-                                <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
-                                    <div class="schema-element-title">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
-                                    <div class="schema-element-field">{{field.field}}&nbsp;</div>
-                                </div>
+								{% include "includes/element/default.html" with schema=schema.id field=field %}
                             </td>
                             {% for tgt_schema, tgt_fields in field.mappings.items %}
                                 <td>
@@ -40,59 +37,10 @@
                                         {% if not forloop.first %}
                                             <br/>
                                         {% endif %}
-                                        <div class="btn btn-default btn-schema-element btn-schema-element-{{tgt_schema}}" data-toggle="modal" data-target="#{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
-                                            <div class="schema-element-title">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
-                                            <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
-                                        </div>
-                                        <div class="modal fade" id="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{schema.id}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <div class="modal-title">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>{{tgt_field.note}}</p>
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{schema.id}}">
-                                                                            <div class="schema-element-title">{{field.label}}</div>
-                                                                            <div class="schema-element-field">{{field.field}}&nbsp;</div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}}">
-                                                                            <div class="schema-element-title">{{tgt_field.label}}</div>
-                                                                            <div class="schema-element-field">{{tgt_field.field}}&nbsp;</div>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                {% for example in tgt_field.examples %}
-                                                                    <tr>
-                                                                        <td>
-                                                                            <pre>{{example.0}}</pre>
-                                                                        </td>
-                                                                        <td>
-                                                                            <pre>{{example.1}}</pre>
-                                                                        </td>
-                                                                    </tr>
-                                                                {% endfor %} 
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+										{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
+										{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
                                     {% empty %}
-                                        <div class="hidden btn btn-static btn-schema-element btn-schema-element-{{tgt_schema}} btn-schema-element-empty">
-                                            <div class="schema-element-title">&nbsp;</div>
-                                            <div class="schema-element-field">&nbsp;</div>
-                                        </div>
+										{% include "includes/element/empty.html" with schema=tgt_schema %}
                                     {% endfor %}
                                 </td>
                             {% endfor %}

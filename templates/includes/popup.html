@@ -1,0 +1,38 @@
+<div class="modal fade" id="{{schema}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal" tabindex="-1" role="dialog" aria-labelledby="{{schema}}_{{field.id}}_to_{{tgt_schema}}_{{tgt_field.id}}_modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-title">
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>{{tgt_field.note}}</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>
+								{% include "includes/element/default.html" with schema=schema field=field %}
+                            </td>
+                            <td>
+								{% include "includes/element/default.html" with schema=tgt_schema field=tgt_field %}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for example in tgt_field.examples %}
+                            <tr>
+                                <td>
+                                    <pre>{{example.0}}</pre>
+                                </td>
+                                <td>
+                                    <pre>{{example.1}}</pre>
+                                </td>
+                            </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
