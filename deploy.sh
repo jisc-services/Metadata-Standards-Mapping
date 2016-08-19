@@ -21,7 +21,7 @@ confirm () {
 }
 
 cd build
-git st
+git status
 confirm "OK to push? [y/N]" && push
 cd ..
 
