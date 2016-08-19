@@ -29,7 +29,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="schema-info-{{schema.id}}-heading">
                             <h4 class="panel-title">
-                                <a class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#schema-info-{{schema.id}}" href="#schema-info-{{schema.id}}-collapse" aria-expanded="true" aria-controls="schema-info-{{schema.id}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Schema Details</a>
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#schema-info-{{schema.id}}" href="#schema-info-{{schema.id}}-collapse" aria-expanded="true" aria-controls="schema-info-{{schema.id}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Details</a>
                             </h4>
                         </div>
                         <div id="schema-info-{{schema.id}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-info-{{schema.id}}-heading">
@@ -38,29 +38,31 @@
                     </div>
                 </div>
 
-				{% for field in schema.fields %}
-					<div class="row row-schema row-schema-{% cycle 'odd' 'even' %}">
-						<div class="col-xs-6 col-md-3 col-schema">
-							{% include "includes/element/default.html" with schema=schema.id field=field %}
-						</div>
-						<div class="col-xs-6 col-md-9">
-							<div class="row">
-								{% for tgt_schema, tgt_fields in field.mappings.items %}
-									<div class="col-xs-12 col-md-4">
-										<div class="row">
+				<div class="container-fluid">
+					{% for field in schema.fields %}
+						<div class="row row-schema row-schema-{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+							<div class="col-xs-6 col-md-3 col-schema">
+								{% include "includes/element/default.html" with schema=schema.id field=field %}
+							</div>
+							<div class="col-xs-6 col-md-9">
+								<div class="row">
+									{% for tgt_schema, tgt_fields in field.mappings.items %}
+										<div class="col-xs-12 col-md-4">
+											<div class="row">
 												{% for tgt_field in tgt_fields %}
-											<div class="col-xs-12 col-schema">
-													{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
-													{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
-											</div>
+													<div class="col-xs-12 col-schema">
+														{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
+														{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
+													</div>
 												{% endfor %}
+											</div>
 										</div>
-									</div>
-								{% endfor %}
+									{% endfor %}
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
 
             </div>
         {% endfor %}
