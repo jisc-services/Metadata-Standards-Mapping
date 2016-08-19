@@ -33,6 +33,10 @@
     table-layout: fixed;
     word-wrap: break-word;
 }
+.table-schema-details tr th:nth-child(1)
+{
+    width: 20%;
+}
 
 /* schema element buttons */
 .btn-schema-element
