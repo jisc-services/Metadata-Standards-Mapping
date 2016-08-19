@@ -37,28 +37,31 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-schema">
-                    {% for field in schema.fields %}
-                        <tr>
-                            <td>
-								{% include "includes/element/default.html" with schema=schema.id field=field %}
-                            </td>
-                            {% for tgt_schema, tgt_fields in field.mappings.items %}
-                                <td>
-                                    {% for tgt_field in tgt_fields %}
-                                        {% if not forloop.first %}
-                                            <br/>
-                                        {% endif %}
-										{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
-										{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
-                                    {% empty %}
-										{% include "includes/element/empty.html" with schema=tgt_schema %}
-                                    {% endfor %}
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </table>
+
+				{% for field in schema.fields %}
+					<div class="row row-schema row-schema-{% cycle 'odd' 'even' %}">
+						<div class="col-xs-6 col-md-3 col-schema">
+							{% include "includes/element/default.html" with schema=schema.id field=field %}
+						</div>
+						<div class="col-xs-6 col-md-9">
+							<div class="row">
+								{% for tgt_schema, tgt_fields in field.mappings.items %}
+									<div class="col-xs-12 col-md-4">
+										<div class="row">
+												{% for tgt_field in tgt_fields %}
+											<div class="col-xs-12 col-schema">
+													{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
+													{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
+											</div>
+												{% endfor %}
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
             </div>
         {% endfor %}
     </div>

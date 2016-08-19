@@ -18,8 +18,9 @@
 /* schema element buttons */
 .btn-schema-element
 {
-    width: 220px;
+    width: 100%;
     text-align: left;
+    overflow: hidden;
 }
 .btn-static
 {
@@ -68,6 +69,24 @@
 {
     font-size: 80%;
     font-family: monospace;
+}
+
+/* grid spacing */
+.schema-element-spacer
+{
+    height: 8px;
+}
+.row-schema
+{
+    padding-bottom: 8px;
+}
+.col-schema
+{
+    margin-top: 8px;
+}
+.row-schema-even
+{
+    background-color: #f9f9f9;
 }
 
 /* schema table */
