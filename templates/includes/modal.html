@@ -1,0 +1,60 @@
+<div class="modal fade" id="{{base}}-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-title">
+                    <div class="schema-element schema-element-{{schema}}">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <div class="schema-element schema-element-{{tgt_schema}}">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>{{tgt_field.note}}</p>
+
+
+                {% with base|add:"-details" as base %}
+					<div class="panel-group" id="{{base}}" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="{{base}}-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#{{base}}" href="#{{base}}-collapse" aria-expanded="true" aria-controls="{{base}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Details</a>
+								</h4>
+							</div>
+							<div id="{{base}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{base}}-heading">
+                                <table class="table table-striped table-hover table-condensed table-field-details">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th class="table-field-details-schema-{{schema}}">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</th>
+                                            <th class="table-field-details-schema-{{tgt_schema}}">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Full name</th>
+                                            <td>{{field.label}}</td>
+                                            <td>{{tgt_field.label}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Field</th>
+                                            <td>{% if field.field %}<code>{{field.field}}</code>{% endif %}</td>
+                                            <td>{% if tgt_field.field %}<code>{{tgt_field.field}}{% endif %}</code></td>
+                                        </tr>
+                                        <tr>
+                                            <th>URL</th>
+                                            <td><a href="{{field.url}}" target="_blank">{{field.url}}</a></td>
+                                            <td><a href="{{tgt_field.url}}" target="_blank">{{tgt_field.url}}</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+							</div>
+						</div>
+					</div>
+                {% endwith %}
+
+
+            </div>
+        </div>
+    </div>
+</div>

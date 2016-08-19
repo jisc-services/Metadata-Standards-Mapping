@@ -25,18 +25,21 @@
     <div class="tab-content">
         {% for schema in schemas %}
             <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{schema.id}}">
-                <div class="panel-group" id="schema-info-{{schema.id}}" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="schema-info-{{schema.id}}-heading">
-                            <h4 class="panel-title">
-                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#schema-info-{{schema.id}}" href="#schema-info-{{schema.id}}-collapse" aria-expanded="true" aria-controls="schema-info-{{schema.id}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  Details</a>
-                            </h4>
-                        </div>
-                        <div id="schema-info-{{schema.id}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema-info-{{schema.id}}-heading">
-                            {% include "includes/schema.html" with schema=schema %}
-                        </div>
-                    </div>
-                </div>
+
+				{% with "schema-"|add:schema.id|add:"-details" as base %}
+					<div class="panel-group" id="{{base}}" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="{{base}}-heading">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#{{base}}" href="#{{base}}-collapse" aria-expanded="true" aria-controls="{{base}}-collapse"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Details</a>
+								</h4>
+							</div>
+							<div id="{{base}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{base}}-heading">
+								{% include "includes/schema.html" with schema=schema %}
+							</div>
+						</div>
+					</div>
+				{% endwith %}
 
 				<div class="container-fluid">
 					{% for field in schema.fields %}
@@ -51,8 +54,10 @@
 											<div class="row">
 												{% for tgt_field in tgt_fields %}
 													<div class="col-xs-12 col-schema">
-														{% include "includes/element/popup.html" with schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
-														{% include "includes/popup.html" with schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
+														{% with "mapping-"|add:schema.id|add:"-"|add:field.id|add:"-to-"|add:tgt_schema|add:"-"|add:tgt_field.id as base %}
+															{% include "includes/element/popup.html" with base=base schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
+															{% include "includes/modal.html" with base=base schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
+														{% endwith %}
 													</div>
 												{% endfor %}
 											</div>
