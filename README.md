@@ -1,3 +1,12 @@
+# Setup
+
+	git clone git@github.com:drtjmb/rocr.git build
+	vagrant up
+	vagrant ssh
+	/vagrant/build.sh
+	logout
+	./deploy.sh
+
 There is a group of established “standards” with which you are familiar:
 
 RCUK (RIOXX)
