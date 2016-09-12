@@ -1,0 +1,90 @@
+schema,id,field,label,shortlabel,url
+rioxx,free_to_read,ali:free_to_read,Free to read,,
+rioxx,license_ref,ali:license_ref,License Ref,,
+rioxx,coverage,dc:coverage,Coverage,,
+rioxx,description,dc:description,Description,,
+rioxx,format,dc:format,Format,,
+rioxx,identifier,dc:identifier,Identifier,,
+rioxx,language,dc:language,Language,,
+rioxx,publisher,dc:publisher,Publisher,,
+rioxx,relation,dc:relation,Relation,,
+rioxx,source,dc:source,Source,,
+rioxx,subject,dc:subject,Subject,,
+rioxx,title,dc:title,Title,,
+rioxx,date_accepted,dcterms:dateAccepted,Date Accepted,,
+rioxx,apc,rioxxterms:apc,APC,,
+rioxx,author,rioxxterms:author,Author,,
+rioxx,contributor,rioxxterms:contributor,Contributor,,
+rioxx,project,rioxxterms:project,Project,,
+rioxx,publication_date,rioxxterms:publication_date,Publication Date,,
+rioxx,type,rioxxterms:type,Type,,
+rioxx,version,rioxxterms:version,Version,,
+rioxx,version_of_record,rioxxterms:version_of_record,Version of Record,,
+openaire,title,dc:title,Title,,https://guidelines.openaire.eu/en/latest/literature/field_title.html
+openaire,creator,dc:creator,Creator,,https://guidelines.openaire.eu/en/latest/literature/field_creator.html
+openaire,project_identifier,dc:relation,Project Identifier,,https://guidelines.openaire.eu/en/latest/literature/field_projectid.html
+openaire,access_level,dc:rights,Access Level,,https://guidelines.openaire.eu/en/latest/literature/field_accesslevel.html
+openaire,license_condition,dc:rights,License Condition,,https://guidelines.openaire.eu/en/latest/literature/field_licensecondition.html
+openaire,embargo_end_date,dc:date,Embargo End Date,,https://guidelines.openaire.eu/en/latest/literature/field_embargoenddate.html
+openaire,alternative_identifier,dc:relation,Alternative Identifier,,https://guidelines.openaire.eu/en/latest/literature/field_alternativeidentifier.html
+openaire,publication_reference,dc:relation,Publication Reference,,https://guidelines.openaire.eu/en/latest/literature/field_publicationreference.html
+openaire,dataset_reference,dc:relation,Dataset Reference,,https://guidelines.openaire.eu/en/latest/literature/field_datasetreference.html
+openaire,subject,dc:subject,Subject,,https://guidelines.openaire.eu/en/latest/literature/field_subject.html
+openaire,description,dc:description,Description,,https://guidelines.openaire.eu/en/latest/literature/field_description.html
+openaire,publisher,dc:publisher,Publisher,,https://guidelines.openaire.eu/en/latest/literature/field_publisher.html
+openaire,contributor,dc:contributor,Contributor,,https://guidelines.openaire.eu/en/latest/literature/field_contributor.html
+openaire,publication_date,dc:date,Publication Date,,https://guidelines.openaire.eu/en/latest/literature/field_publicationdate.html
+openaire,publication_type,dc:type,Publication Type,,https://guidelines.openaire.eu/en/latest/literature/field_publicationtype.html
+openaire,publication_version,dc:type,Publication Version,,https://guidelines.openaire.eu/en/latest/literature/field_publicationversion.html
+openaire,format,dc:format,Format,,https://guidelines.openaire.eu/en/latest/literature/field_format.html
+openaire,resource_identifier,dc:identifier,Resource Identifier,,https://guidelines.openaire.eu/en/latest/literature/field_resourceidentifier.html
+openaire,source,dc:source,Source,,https://guidelines.openaire.eu/en/latest/literature/field_source.html
+openaire,language,dc:language,Language,,https://guidelines.openaire.eu/en/latest/literature/field_language.html
+openaire,relation,dc:relation,Relation,,https://guidelines.openaire.eu/en/latest/literature/field_relation.html
+openaire,coverage,dc:coverage,Coverage,,https://guidelines.openaire.eu/en/latest/literature/field_coverage.html
+openaire,audience,dc:audience,Audience,,https://guidelines.openaire.eu/en/latest/literature/field_audience.html
+casrai,app_date,,Internal OA Cost Application/Date,Application Date,http://dictionary.casrai.org/Internal_OA_Cost_Application/Date
+casrai,app_author_name,,Internal OA Cost Application/Author Name,Author Name,http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_Name
+casrai,app_author_id_type,,Internal OA Cost Application/Author ID Type,Author ID Type,http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_ID_Type
+casrai,app_author_id,,Internal OA Cost Application/Author ID,Author ID,http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_ID
+casrai,app_author_organisational_unit,,Internal OA Cost Application/Author Organisational Unit,Author Organisational Unit,http://dictionary.casrai.org/Internal_OA_Cost_Application/Author_Organisational_Unit
+casrai,app_estimated_charge,,Internal OA Cost Application/Estimated Charge,Estimated Charge,http://dictionary.casrai.org/Internal_OA_Cost_Application/Estimated_Charge
+casrai,app_currency,,Internal OA Cost Application/Currency,Currency,http://dictionary.casrai.org/Internal_OA_Cost_Application/Currency
+casrai,app_external_notes,,Internal OA Cost Application/External Notes,External Notes,http://dictionary.casrai.org/Internal_OA_Cost_Application/External_Notes
+casrai,ja_pmc_id,,Journal Article/PMC ID,PMC ID,http://dictionary.casrai.org/Journal_Article/PMC_ID
+casrai,ja_doi,,Journal Article/DOI,DOI,http://dictionary.casrai.org/Journal_Article/DOI
+casrai,ja_issn,,Journal Article/ISSN,ISSN,http://dictionary.casrai.org/Journal_Article/ISSN
+casrai,ja_publisher_name,,Journal Article/Publisher Name,Publisher Name,http://dictionary.casrai.org/Journal_Article/Publisher_Name
+casrai,ja_publisher_id_type,,Journal Article/Publisher ID Type,Publisher ID Type,http://dictionary.casrai.org/Journal_Article/Publisher_ID_Type
+casrai,ja_publisher_id,,Journal Article/Publisher ID,Publisher ID,http://dictionary.casrai.org/Journal_Article/Publisher_ID
+casrai,ja_journal,,Journal Article/Journal,Journal,http://dictionary.casrai.org/Journal_Article/Journal
+casrai,ja_article_title,,Journal Article/Article Title,Article Title,http://dictionary.casrai.org/Journal_Article/Article_Title
+casrai,ja_final_acceptance_date,,Journal Article/Final Acceptance Date,Final Acceptance Date,http://dictionary.casrai.org/Journal_Article/Final_Acceptance_Date
+casrai,ja_publication_date,,Journal Article/Publication Date,Publication Date,http://dictionary.casrai.org/Journal_Article/Publication_Date
+casrai,ja_provisional_acceptance_date,,Journal Article/Provisional Acceptance Date,Provisional Acceptance Date,http://dictionary.casrai.org/Journal_Article/Provisional_Acceptance_Date
+casrai,apc_licence_type,,APC Payment/Licence Type,Licence Type,http://dictionary.casrai.org/APC_Payment/Licence_Type
+casrai,apc_correct_licence_applied,,APC Payment/Correct Licence Applied,Correct Licence Applied,http://dictionary.casrai.org/APC_Payment/Correct_Licence_Applied
+casrai,apc_publication_problems,,APC Payment/Publication Problems,Publication Problems,http://dictionary.casrai.org/APC_Payment/Publication_Problems
+casrai,apc_publication_problem_description,,APC Payment/Publication Problem Description,Publication Problem Description,http://dictionary.casrai.org/APC_Payment/Publication_Problem_Description
+casrai,apc_date,,APC Payment/Date,Payment Date,http://dictionary.casrai.org/APC_Payment/Date
+casrai,apc_amount_paid,,APC Payment/Amount Paid,Amount Paid,http://dictionary.casrai.org/APC_Payment/Amount_Paid
+casrai,apc_vat_ammount,,APC Payment/VAT Amount,VAT Amount,http://dictionary.casrai.org/APC_Payment/VAT_Amount
+casrai,apc_currency,,APC Payment/Currency,Currency,http://dictionary.casrai.org/APC_Payment/Currency
+casrai,apc_added_costs_component,,APC Payment/Added Costs Component,Added Costs Component,http://dictionary.casrai.org/APC_Payment/Added_Costs_Component
+casrai,apc_payment_adjustments,,APC Payment/Payment Adjustments,Payment Adjustments,http://dictionary.casrai.org/APC_Payment/Payment_Adjustments
+casrai,apc_source_funds,,APC Payment/Source Fund(s),Source Fund(s),http://dictionary.casrai.org/APC_Payment/Source_Fund(s)
+casrai,apc_source_grants,,APC Payment/Source Grant(s),Source Grant(s),http://dictionary.casrai.org/APC_Payment/Source_Grant(s)
+hefce,output_type,,Output type,,
+hefce,acceptance_date,,Acceptance date,,
+hefce,technical_exception,,Technical exception,,
+hefce,version_of_deposited_file,,Version of deposited file,,
+hefce,deposit_date,,Deposit date,,
+hefce,deposit_exception,,Deposit exception,,
+hefce,publication_date,,Publication date,,
+hefce,embargo_end_date,,Embargo end date,,
+hefce,license_ref,,License Ref,,
+hefce,free_to_read,,Free to read,,
+hefce,free_to_download,,Free to download,,
+hefce,in_text_search,,In-text search,,
+hefce,access_exception,,Access exception,,
+hefce,other_exception,,Other exception,,
