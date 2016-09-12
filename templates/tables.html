@@ -23,10 +23,10 @@
     </ul>
 
     <div class="tab-content">
-        {% for schema in schemas %}
-            <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{schema.id}}">
+        {% for from_schema in schemas %}
+            <div role="tabpanel" class="tab-pane fade{% if forloop.first %} in active{% endif %}" id="{{from_schema.id}}">
 
-				{% with "schema-"|add:schema.id|add:"-details" as base %}
+				{% with "schema-"|add:from_schema.id|add:"-details" as base %}
 					<div class="panel-group" id="{{base}}" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-default">
 							<div class="panel-heading" role="tab" id="{{base}}-heading">
@@ -35,28 +35,28 @@
 								</h4>
 							</div>
 							<div id="{{base}}-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="{{base}}-heading">
-								{% include "includes/schema.html" with schema=schema %}
+								{% include "includes/schema.html" with schema=from_schema %}
 							</div>
 						</div>
 					</div>
 				{% endwith %}
 
 				<div class="container-fluid">
-					{% for field in schema.fields %}
+					{% for from_field in from_schema.fields %}
 						<div class="row row-schema row-schema-{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
 							<div class="col-xs-6 col-md-3 col-schema">
-								{% include "includes/element/default.html" with schema=schema.id field=field %}
+								{% include "includes/element/default.html" with field=from_field %}
 							</div>
 							<div class="col-xs-6 col-md-9">
 								<div class="row">
-									{% for tgt_schema, tgt_fields in field.mappings.items %}
+									{% for to_schema, to_fields in from_field.mappings.items %}
 										<div class="col-xs-12 col-md-4">
 											<div class="row">
-												{% for tgt_field in tgt_fields %}
+												{% for to_field in to_fields %}
 													<div class="col-xs-12 col-schema">
-														{% with "mapping-"|add:schema.id|add:"-"|add:field.id|add:"-to-"|add:tgt_schema|add:"-"|add:tgt_field.id as base %}
-															{% include "includes/element/popup.html" with base=base schema=tgt_schema field=tgt_field src_schema=schema.id src_field=field has_popup=True %}
-															{% include "includes/modal.html" with base=base schema=schema.id field=field tgt_schema=tgt_schema tgt_field=tgt_field %}
+														{% with "mapping-"|add:from_schema.id|add:"-"|add:from_field.id|add:to_schema|add:"-"|add:to_field.id as base %}
+															{% include "includes/element/popup.html" with base=base field=to_field has_popup=True %}
+															{% include "includes/modal.html" with base=base from_field=from_field to_field=to_field %}
 														{% endwith %}
 													</div>
 												{% endfor %}

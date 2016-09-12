@@ -4,15 +4,13 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <div class="modal-title">
-                    <div class="schema-element schema-element-{{schema}}">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
+                    <div class="schema-element schema-element-{{from_field.schema.id}}">{% if from_field.shortlabel %}{{from_field.shortlabel}}{% else %}{{from_field.label}}{% endif %}</div>
                     <span class="glyphicon glyphicon-arrow-right"></span>
-                    <div class="schema-element schema-element-{{tgt_schema}}">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</div>
+                    <div class="schema-element schema-element-{{to_field.schema.id}}">{% if to_field.shortlabel %}{{to_field.shortlabel}}{% else %}{{to_field.label}}{% endif %}</div>
                 </div>
             </div>
             <div class="modal-body">
-                <p>{{tgt_field.note}}</p>
-
-
+                {{to_field.note}}
                 {% with base|add:"-details" as base %}
 					<div class="panel-group" id="{{base}}" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-default">
@@ -26,25 +24,30 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th class="table-field-details-schema-{{schema}}">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</th>
-                                            <th class="table-field-details-schema-{{tgt_schema}}">{% if tgt_field.shortlabel %}{{tgt_field.shortlabel}}{% else %}{{tgt_field.label}}{% endif %}</th>
+                                            <th class="table-field-details-schema-{{from_field.schema.id}}">{% if from_field.shortlabel %}{{from_field.shortlabel}}{% else %}{{from_field.label}}{% endif %}</th>
+                                            <th class="table-field-details-schema-{{to_field.schema.id}}">{% if to_field.shortlabel %}{{to_field.shortlabel}}{% else %}{{to_field.label}}{% endif %}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <th>Schema</th>
+                                            <td>{{from_field.schema.shorttitle}}</td>
+                                            <td>{{to_field.schema.shorttitle}}</td>
+                                        </tr>
+                                        <tr>
                                             <th>Full name</th>
-                                            <td>{{field.label}}</td>
-                                            <td>{{tgt_field.label}}</td>
+                                            <td>{{from_field.label}}</td>
+                                            <td>{{to_field.label}}</td>
                                         </tr>
                                         <tr>
                                             <th>Field</th>
-                                            <td>{% if field.field %}<code>{{field.field}}</code>{% endif %}</td>
-                                            <td>{% if tgt_field.field %}<code>{{tgt_field.field}}{% endif %}</code></td>
+                                            <td>{% if from_field.field %}<code>{{from_field.field}}</code>{% endif %}</td>
+                                            <td>{% if to_field.field %}<code>{{to_field.field}}{% endif %}</code></td>
                                         </tr>
                                         <tr>
                                             <th>URL</th>
-                                            <td><a href="{{field.url}}" target="_blank">{{field.url}}</a></td>
-                                            <td><a href="{{tgt_field.url}}" target="_blank">{{tgt_field.url}}</a></td>
+                                            <td><a href="{{from_field.url}}" target="_blank">{{from_field.url}}</a></td>
+                                            <td><a href="{{to_field.url}}" target="_blank">{{to_field.url}}</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -52,7 +55,6 @@
 						</div>
 					</div>
                 {% endwith %}
-
 
             </div>
         </div>
