@@ -71,5 +71,5 @@ TEMPLATES = [
 ]
 settings.configure(TEMPLATES=TEMPLATES)
 django.setup()
-template = get_template('tables.html')
+template = get_template('mapping.html')
 print template.render(Context({'schemas': data}))
