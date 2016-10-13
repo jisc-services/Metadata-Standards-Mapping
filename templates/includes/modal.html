@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                {{to_field.note}}
+                {{to_field.note|safe}}
                 {% with base|add:"-details" as base %}
 					<div class="panel-group" id="{{base}}" role="tablist" aria-multiselectable="true">
 						<div class="panel panel-default">

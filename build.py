@@ -4,6 +4,7 @@ import django
 from django.conf import settings
 from django.template.loader import get_template
 from django.template import Context
+from markdown import markdown
 import os.path
 
 # read schemas
@@ -40,6 +41,24 @@ with open('data/mappings.csv', 'rb') as f:
             mappings[fsid][ffid][tsid] = []
         mappings[fsid][ffid][tsid].append(row['to_field'])
 
+# read mapping notes
+notes = {}
+with open('data/mapping_notes.md', 'r') as f:
+    nid = ''
+    note = ''
+    for line in f:
+        if line.startswith('# '):
+            if nid:
+                notes[nid] = note
+                note = ''
+            nid = line[2:].strip()
+        else:
+            note += line
+    notes[nid] = note # last entry
+# convert to html
+for nid, note in notes.iteritems():
+    notes[nid] = markdown(note)
+
 # build context for template
 data = []
 for sid in schemas:
@@ -57,10 +76,9 @@ for sid in schemas:
                     if tsid not in field['mappings']:
                         field['mappings'][tsid] = []
                     field['mappings'][tsid].append(tfield)
-                    notefile = 'data/mappings/%s-%s-%s-%s.html' % (sid, fid, tsid, tfid)
-                    if os.path.isfile(notefile):
-                        with open(notefile, 'r') as f:
-                            tfield['note'] = f.read()
+                    nid = '%s-%s-%s-%s' % (sid, fid, tsid, tfid)
+                    if nid in notes:
+                        tfield['note'] = notes[nid]
 
 # populate and print template
 TEMPLATES = [
