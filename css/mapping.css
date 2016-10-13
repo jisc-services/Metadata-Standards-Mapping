@@ -1,7 +1,4 @@
 /* tabs */
-.tab-content {
-    margin-top: 30px;
-}
 .tab-schema-rioxx {
     border-bottom: 5px solid red;
 }
@@ -14,9 +11,9 @@
 .tab-schema-hefce {
     border-bottom: 5px solid green;
 }
-.tab-content
-{
+.tab-content {
     margin-top: 8px;    
+    margin-bottom: 30px;    
 }
 .panel-group
 {
