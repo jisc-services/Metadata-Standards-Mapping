@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     cd /vagrant
     virtualenv venv
     source venv/bin/activate
-    pip install django
+    pip install django markdown
     ./build.sh
   SHELL
   config.vm.provision "shell", inline: <<-SHELL
