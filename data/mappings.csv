@@ -97,6 +97,7 @@ casrai,apc_licence_type,rioxx,license_ref
 casrai,apc_licence_type,openaire,license_condition
 casrai,apc_licence_type,hefce,license_ref
 casrai,apc_payment_adjustments,rioxx,apc
+casrai,apc_source_funds,rioxx,project
 casrai,apc_source_grants,openaire,project_identifier
 casrai,apc_source_grants,rioxx,project
 hefce,output_type,rioxx,type
