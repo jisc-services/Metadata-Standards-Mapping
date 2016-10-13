@@ -117,7 +117,7 @@
 }
 
 /* modals */
-.schema-element
+.modal-title .schema-element
 {
     display: inline-block;
     font-size: 16px;
@@ -125,16 +125,16 @@
     margin-left: 8px;
     margin-right: 8px;
 }
-.schema-element-rioxx {
+.modal-title .schema-element-rioxx {
     border-bottom: 5px solid red;
 }
-.schema-element-openaire {
+.modal-title .schema-element-openaire {
     border-bottom: 5px solid orange;
 }
-.schema-element-casrai {
+.modal-title .schema-element-casrai {
     border-bottom: 5px solid blue;
 }
-.schema-element-hefce {
+.modal-title .schema-element-hefce {
     border-bottom: 5px solid green;
 }
 .table-field-details
@@ -160,4 +160,20 @@
 }
 .mapping-note {
     margin-bottom: 20px;
+}
+.mapping-note .schema-element
+{
+    font-weight: bold;
+}
+.mapping-note .schema-element-rioxx {
+    border-bottom: 2px solid red;
+}
+.mapping-note .schema-element-openaire {
+    border-bottom: 2px solid orange;
+}
+.mapping-note .schema-element-casrai {
+    border-bottom: 2px solid blue;
+}
+.mapping-note .schema-element-hefce {
+    border-bottom: 2px solid green;
 }
