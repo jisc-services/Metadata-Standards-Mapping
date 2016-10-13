@@ -70,15 +70,18 @@ for sid in schemas:
         schema['fields'].append(field)
         field['mappings'] = OrderedDict()
         if fid in mappings[sid]:
-            for tsid in mappings[sid][fid]: # ordered
-                for tfid in mappings[sid][fid][tsid]:
-                    tfield = fields[tsid][tfid].copy()
-                    if tsid not in field['mappings']:
-                        field['mappings'][tsid] = []
-                    field['mappings'][tsid].append(tfield)
-                    nid = '%s-%s-%s-%s' % (sid, fid, tsid, tfid)
-                    if nid in notes:
-                        tfield['note'] = notes[nid]
+            for tsid in schemas:
+                if sid == tsid:
+                    continue
+                if tsid not in field['mappings']:
+                    field['mappings'][tsid] = []
+                if tsid in mappings[sid][fid]:
+                    for tfid in mappings[sid][fid][tsid]:
+                        tfield = fields[tsid][tfid].copy()
+                        field['mappings'][tsid].append(tfield)
+                        nid = '%s-%s-%s-%s' % (sid, fid, tsid, tfid)
+                        if nid in notes:
+                            tfield['note'] = notes[nid]
 
 # populate and print template
 TEMPLATES = [
