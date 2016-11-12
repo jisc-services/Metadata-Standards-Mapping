@@ -13,16 +13,16 @@
 
 <div class="container">
 
-    {% include "includes/header.html" %}
+    <div class="header">
+        <img src="css/images/jisc-logo-103.png" alt="Jisc logo">
+        <h1>Mapping UK repository-related metadata schemas</h1>
+    </div>
 
-    <h1>Mapping UK repository-related metadata schemas</h1>
-
-    <p>Choose a tab to compare schemas:</p>
-
-    <ul class="nav nav-tabs" role="tablist">
+    <ul id="tabs" class="nav nav-tabs" role="tablist">
         {% for schema in schemas %}
             <li role="presentation" class="tab-schema tab-schema-{{schema.id}}{% if forloop.first %} active{% endif %}"><a href="#{{schema.id}}" aria-controls="{{schema.id}}" role="tab" data-toggle="tab">{{schema.shorttitle}}</a></li>
         {% endfor %}
+        <li class="tab-help"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Choose a tab to compare schemas</li>
     </ul>
 
     <div class="tab-content">
@@ -89,5 +89,10 @@
     }).on('hidden.bs.collapse', function(){
         $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
     });
+    $('#tabs').affix({
+        offset: {
+            top: $('.header').height()
+        }
+    })
 </script>
 {% endblock %}
