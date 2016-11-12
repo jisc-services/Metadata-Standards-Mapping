@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 {% if to_field.note %}
-                    <h4>Notes</h4>
+                    <h4 class="vertical-align:middle"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Tips</h4>
                     <div class="mapping-note">{{to_field.note|safe}}</div>
                 {% endif %}
                 {% with base|add:"-details" as base %}
