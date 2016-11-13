@@ -131,87 +131,252 @@ With vocabulary mapping
 
 # openaire-access_level-hefce-free_to_read
 
-If Access Level is openAccess
+If the <span class="schema-element schema-element-openaire">Access Level</span> is ```openAccess```, set <span class="schema-element schema-element-hefce">Free to Read</span>, for example:
+
+    <dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+
+maps to:
+
+    <ali:free_to_read>
 
 # openaire-access_level-rioxx-free_to_read
 
-If Access Level is openAccess
+If the <span class="schema-element schema-element-openaire">Access Level</span> is ```openAccess```, set <span class="schema-element schema-element-rioxx">Free to Read</span>, for example:
+
+    <dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+
+maps to:
+
+    <ali:free_to_read>
 
 # openaire-alternative_identifier-casrai-ja_issn
 
-If Alternative Identifier scheme is eissn or pissn
+If the <span class="schema-element schema-element-openaire">Alternative Identifier</span> element has a ```eissn``` or ```pissn``` scheme, map it to the <span class="schema-element schema-element-casrai">ISSN</span> element, for example:
+
+    <dc:relation>
+        info:eu-repo/semantics/altIdentifier/pissn/0028-0836
+    </dc:relation>
+
+maps to:
+
+     0028-0836
 
 # openaire-alternative_identifier-casrai-ja_pmc_id
 
-If Alternative Identifier scheme is pmid
+If the <span class="schema-element schema-element-openaire">Alternative Identifier</span> element has a ```pmid``` scheme, map it to the <span class="schema-element schema-element-casrai">PMC ID</span> element, for example:
 
-# openaire-creator-casrai-app_author_id
+    <dc:relation>
+        info:eu-repo/semantics/altIdentifier/pmid/27819666
+    </dc:relation>
 
-Derive from HTTP URI
+maps to:
 
-# openaire-creator-casrai-app_author_id_type
-
-Derive from HTTP URI
-
-# openaire-creator-casrai-app_author_name
-
-Name part only
-
-# openaire-creator-rioxx-author
-
-Name part only
+    27819666
 
 # openaire-embargo_end_date-hefce-free_to_read
 
-Assuming free to read after embargo ends
+If the <span class="schema-element schema-element-openaire">Embargo End Date</span> has passed, set <span class="schema-element schema-element-hefce">Free to Read</span>, for example:
+
+    <dc:date>info:eu-repo/date/embargoEnd/2015-12-31</dc:date>
+
+maps to:
+
+    <ali:free_to_read start_date="2015-12-31">
 
 # openaire-embargo_end_date-rioxx-free_to_read
 
-Assuming free to read after embargo ends
+If the <span class="schema-element schema-element-openaire">Embargo End Date</span> has passed, set <span class="schema-element schema-element-rioxx">Free to Read</span>, for example:
+
+    <dc:date>info:eu-repo/date/embargoEnd/2015-12-31</dc:date>
+
+maps to:
+
+    <ali:free_to_read start_date="2015-12-31">
 
 # openaire-license_condition-casrai-apc_licence_type
 
-Convert string to vocab
+Apply pattern matching to the <span class="schema-element schema-element-openaire">License Condition</span> element to try and extract a corresponding CLicence TypeC, for example:
+
+    <dc:rights>http://creativecommons.org/licenses/by-sa/2.0/uk/</dc:rights>
+
+    <dc:rights>cc-by-sa, Andrew Smith</dc:rights>
+
+    <dc:rights>cc-by-sa, info:eu-repo/dai/nl/344568</dc:rights>
+
+all map to:
+
+    <span class="schema-element schema-element-casrai"></span> BY-SA    
+
+See list of allowable <span class="schema-element schema-element-casrai">License Type</span> values; http://dictionary.casrai.org/Licence_Types
 
 # openaire-license_condition-hefce-license_ref
 
-If License Condition is CC
+If the <span class="schema-element schema-element-openaire">License Condition</span> is a HTTP URI (or a HTTP URI can be derived) map it to <span class="schema-element schema-element-hefce">License Ref</span>, for example:
+
+    <dc:rights>
+        http://creativecommons.org/licenses/by-sa/2.0/uk/
+    </dc:rights>
+
+maps to:
+
+    <ali:license_ref start_date="2015-02-17">
+        http://creativecommons.org/licenses/by-sa/2.0/uk/
+    </ali:license_ref>
+
+and:
+
+    <dc:rights>cc-by-sa, Andrew Smith</dc:rights>
+
+maps to (note CC 4.0 assumed):
+
+    <ali:license_ref start_date="2015-02-17">
+        http://creativecommons.org/licenses/by-sa/4.0<
+    /ali:license_ref>
+
+Note that ```start_date``` must be included, for example use the date the mapping took place.
 
 # openaire-license_condition-rioxx-license_ref
 
-If License Condition is CC
+If the <span class="schema-element schema-element-openaire">License Condition</span> is a HTTP URI (or a HTTP URI can be derived) map it to <span class="schema-element schema-element-rioxx">License Ref</span>, for example:
+
+    <dc:rights>
+        http://creativecommons.org/licenses/by-sa/2.0/uk/
+    </dc:rights>
+
+maps to:
+
+    <ali:license_ref start_date="2015-02-17">
+        http://creativecommons.org/licenses/by-sa/2.0/uk/
+    </ali:license_ref>
+
+and:
+
+    <dc:rights>cc-by-sa, Andrew Smith</dc:rights>
+
+maps to (note CC 4.0 assumed):
+
+    <ali:license_ref start_date="2015-02-17">
+        http://creativecommons.org/licenses/by-sa/4.0<
+    /ali:license_ref>
+
+Note that ```start_date``` must be included, for example use the date the mapping took place.
 
 # openaire-project_identifier-casrai-apc_source_grants
 
-Map ProjectID
+Extract the ```ProjectID``` from the <span class="schema-element schema-element-openaire">Project Identifier</span> URI, for example:
+
+    <dc:relation>
+        info:eu-repo/grantAgreement/ARC/Future Fellowships/FT120100464
+    </dc:relation>
+
+maps to:
+
+    FT120100464 
 
 # openaire-project_identifier-rioxx-project
 
-Map Funder to funder_name and ProjectID to project ID
+Extract the ```Funder``` and ```ProjectID``` from the <span class="schema-element schema-element-openaire">Project Identifier</span> URI, for example:
+
+    <dc:relation>
+        info:eu-repo/grantAgreement/ARC/Future Fellowships/FT120100464
+    </dc:relation>
+
+maps to:
+
+    <rioxxterms:project funder_name="ARC">
+       FT120100464 
+    </rioxxterms:project>
 
 # openaire-publication_version-hefce-version_of_deposited_file
 
-With vocabulary mapping
+Map the <span class="schema-element schema-element-openaire">Publication Version</span> vocabulary to the <span class="schema-element schema-element-hefce">Version</span> vocabulary:
+
+| draft | AO |
+| submittedVersion | SMUR |
+| acceptedVersion | AM |
+| publishedVersion | VoR |
+| updatedVersion | CVoR |
+
+For example:
+
+    <dc:type>info:eu-repo/semantics/acceptedVersion</dc:type>
+
+maps to:
+
+    <rioxxterms:version>AM</rioxxterms:version>
+
 
 # openaire-publication_version-rioxx-version
 
-With vocabulary mapping
+Map the <span class="schema-element schema-element-openaire">Publication Version</span> vocabulary to the <span class="schema-element schema-element-rioxx">Version</span> vocabulary:
+
+| draft | AO |
+| submittedVersion | SMUR |
+| acceptedVersion | AM |
+| publishedVersion | VoR |
+| updatedVersion | CVoR |
+
+For example:
+
+    <dc:type>info:eu-repo/semantics/acceptedVersion</dc:type>
+
+maps to:
+
+    <rioxxterms:version>AM</rioxxterms:version>
 
 # openaire-resource_identifier-casrai-ja_doi
 
-If Resource Identifier includes a DOI URL
+If one of the <span class="schema-element schema-element-openaire">Resource Identifier</span> values contains a DOI, map it to CDOIC, for example:
+
+    <dc:identifier>http://hdl.handle.net/1234/5628 </dc:identifier>
+    <dc:identifier>urn:isbn:123456789</dc:identifier>
+    <dc:identifier>info:doi:10-123456789</dc:identifier>
+
+maps to:
+
+    10-123456789
 
 # openaire-resource_identifier-casrai-ja_issn
 
-If Resource Identifier includes a ISSN URL
+If one of the <span class="schema-element schema-element-openaire">Resource Identifier</span> values contains an ISSN, map it to CISSNC, for example:
+
+    <dc:identifier>http://hdl.handle.net/1234/5628 </dc:identifier>
+    <dc:identifier>urn:issn:0028-0836</dc:identifier>
+    <dc:identifier>info:doi:10-123456789</dc:identifier>
+
+maps to:
+
+    0028-0836
 
 # openaire-resource_identifier-casrai-ja_pmc_id
 
-If Resource Identifier includes a PMID URL
+If one of the <span class="schema-element schema-element-openaire">Resource Identifier</span> values contains a Pubmed URL, map it to <span class="schema-element schema-element-casrai">PM</span> IDC, for example:
+
+    <dc:identifier>
+        https://www.ncbi.nlm.nih.gov/pubmed/27818134
+    </dc:identifier>
+    <dc:identifier>urn:issn:0028-0836</dc:identifier>
+    <dc:identifier>info:doi:10-123456789</dc:identifier>
+
+maps to:
+
+    27818134
 
 # openaire-resource_identifier-rioxx-version_of_record
 
-If Resource Identifier includes a DOI URL (or ISSN/ISBN?)
+If one of the <span class="schema-element schema-element-openaire">Resource Identifier</span> values contains a DOI, map it to <span class="schema-element schema-element-rioxx">Version of Record</span>, for example:
+
+    <dc:identifier>http://hdl.handle.net/1234/5628 </dc:identifier>
+    <dc:identifier>urn:isbn:123456789</dc:identifier>
+    <dc:identifier>info:doi:10.1006/jmbi.1995.0238</dc:identifier>
+
+maps to:
+
+    <rioxxterms:version_of_record>
+        http://dx.doi.org/10.1006/jmbi.1995.0238
+    </rioxxterms:version_of_record>
+
+Note that the DOI must be represented in its HTTP form.
 
 # rioxx-apc-casrai-apc_payment_adjustments
 
