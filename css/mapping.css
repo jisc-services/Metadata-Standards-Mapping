@@ -7,7 +7,7 @@
 
 /* header */
 .header {
-    background: url('images/header.png') no-repeat top center;
+    background: url('images/map_66972013.png') no-repeat top center;
     background-size: cover;
     height: 250px;
     position: relative;
@@ -218,4 +218,20 @@
 }
 .mapping-note .schema-element-hefce {
     border-bottom: 2px solid #fe8b2d;
+}
+
+/* footer */
+footer {
+    background: url('images/map_66972013.png') no-repeat bottom center;
+    background-size: cover;
+    padding: 20px;
+}
+footer p {
+    display: inline-block;
+    margin: 0px;
+    background-color: white;
+    opacity: 0.9;
+    font-family: "Stag Sans Web Light","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Arial,sans-serif;
+    font-size: 90%;
+    font-weight: bold;
 }
