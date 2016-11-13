@@ -1,4 +1,4 @@
 <div class="btn btn-default btn-schema-element btn-schema-element-{{field.schema.id}}" data-toggle="modal" data-target="#{{base}}-modal">
-    <div class="schema-element-title">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}</div>
+    <div class="schema-element-title">{% if field.shortlabel %}{{field.shortlabel}}{% else %}{{field.label}}{% endif %}{% if field.note %} <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>{% endif %}</div>
     <div class="schema-element-field">{{field.field}}&nbsp;</div>
 </div>

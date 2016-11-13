@@ -135,6 +135,10 @@
     font-weight: bolder;
     white-space: nowrap;
 }
+.schema-element-title span
+{
+    float: right;
+}
 .schema-element-field
 {
     font-size: 80%;
@@ -241,4 +245,9 @@ footer p {
     font-family: "Stag Sans Web Light","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Arial,sans-serif;
     font-size: 90%;
     font-weight: bold;
+}
+
+/* glyphs */
+.glyphicon {
+    color: darkgray;
 }
