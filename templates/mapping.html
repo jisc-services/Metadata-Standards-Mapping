@@ -21,7 +21,7 @@
         {% for schema in schemas %}
             <li role="presentation" class="tab-schema tab-schema-{{schema.id}}{% if forloop.first %} active{% endif %}"><a href="#{{schema.id}}" aria-controls="{{schema.id}}" role="tab" data-toggle="tab">{{schema.shorttitle}}</a></li>
         {% endfor %}
-        <li class="tab-help"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Choose a tab to compare schemas</li>
+        <li class="tab-help hidden-xs"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Choose a tab to compare schemas</li>
     </ul>
 
     <div class="tab-content">
