@@ -5,6 +5,12 @@
     ref #fe8b2d
 */
 
+/* fonts */
+@font-face {
+    font-family:"Stag Sans Web Light";
+    url("fonts/StagSansWeb-Light.woff") format('woff');
+}
+
 /* header */
 .header {
     background: url('images/map_66972013.png') no-repeat top center;
