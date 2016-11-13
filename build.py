@@ -43,7 +43,7 @@ with open('data/mappings.csv', 'rb') as f:
 
 # read mapping notes
 notes = {}
-with open('data/notes.md', 'r') as f:
+with open('data/tips.md', 'r') as f:
     nid = ''
     note = ''
     for line in f:
