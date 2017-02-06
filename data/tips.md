@@ -149,15 +149,57 @@ Assuming free to read after embargo ends
 
 # hefce-free_to_read-openaire-access_level
 
-Set Access Level to openAccess if within start/end dates
+The ````info:eu-repo/semantics/openAccess``` openaire:access_level can be determined from the hefce:free_to_read element (if the resource is not Open Access it is not possible to determine its access level from hefce:free_to_read alone).
+
+## Examples:
+
+    <ali:free_to_read>
+    <ali:free_to_read start_date="2013-03-28">
+
+Both hefce:free_to_read values map to:
+
+    <dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+
+But the following value (or the absence of a value) results in no mapping:
+
+    <ali:free_to_read start_date="2013-03-28" end_date="2014-04-30">
 
 # hefce-license_ref-casrai-apc_licence_type
 
-With vocab mapping
+Use pattern matching to identify Creative Commons licenses and map them to the appropriate casrai:apc_license_type.
+
+## Examples
+
+The following hefce:license_ref value:
+
+    <ali:license_ref>http://creativecommons.org/licenses/by/4.0</ali:license_ref>
+
+maps to:
+
+    Licence Types/CC BY
+
+[casrai:apc_license_type dictionary](http://dictionary.casrai.org/Licence_Types)
 
 # hefce-version_of_deposited_file-openaire-publication_version
 
-With vocabulary mapping
+Map the hefce:version_of_deposited_file value to the appropriate openaire:publication_version:
+
+| AO | draft |
+| SMUR | submittedVersion |
+| AM | acceptedVersion |
+| P | no mapping |
+| VoR | publishedVersion |
+| CVoR | updatedVersion |
+| EVoR | updatedVersion |
+| NA | no mapping |
+
+## Examples
+
+   <rioxxterms:version>AM</rioxxterms:version>
+
+maps to:
+
+    <dc:type>info:eu-repo/semantics/acceptedVersion</dc:type>
 
 # openaire-access_level-hefce-free_to_read
 
@@ -478,7 +520,7 @@ produces:
 
 # rioxx-free_to_read-openaire-access_level
 
-Only the openaire:access_level ```info:eu-repo/semantics/openAccess``` can be determined from the rioxx:free_to_read element (if the resource is not Open Access it is not possible to determine its access level from rioxx:free_to_read alone).
+The ````info:eu-repo/semantics/openAccess``` openaire:access_level can be determined from the rioxx:free_to_read element (if the resource is not Open Access it is not possible to determine its access level from rioxx:free_to_read alone).
 
 ## Examples:
 
@@ -495,20 +537,88 @@ But the following value (or the absence of a value) results in no mapping:
 
 # rioxx-license_ref-casrai-apc_licence_type
 
-With vocab mapping
+Use pattern matching to identify Creative Commons licenses and map them to the appropriate casrai:apc_license_type.
+
+## Examples
+
+The following rioxx:license_ref value:
+
+    <ali:license_ref>http://creativecommons.org/licenses/by/4.0</ali:license_ref>
+
+maps to:
+
+    Licence Types/CC BY
+
+[casrai:apc_license_type dictionary](http://dictionary.casrai.org/Licence_Types)
+
 
 # rioxx-project-casrai-apc_source_grants
 
-Map project ID
+Extract the project ID from the rioxx:project value.
+
+## Examples
+
+    <rioxxterms:project
+        funder_name="Engineering and Physical Sciences Research Council"
+        funder_id="http://isni.org/isni/0000000403948681"
+    >
+        EP/K023195/1
+    </rioxxterms:project>
+
+maps to:
+
+    APC_Payment/Source_Grant(s): EP/K023195/1
 
 # rioxx-project-openaire-project_identifier
 
-Map funder_name to Funder and project ID to ProjectID
+Extract the ```funder_name``` and project ID from the rioxx:project element to create a partial ```info:eu-repo/grantAgreement``` identifier. Use the [OpenAire list of projects](http://api.openaire.eu/oai_pmh?verb=ListRecords&set=projects&metadataPrefix=oaf) to verify the project details.
+
+## Examples
+
+    <rioxxterms:project
+        funder_name="Engineering and Physical Sciences Research Council"
+        funder_id="http://isni.org/isni/0000000403948681"
+    >
+        EP/K023195/1
+    </rioxxterms:project>
+
+maps to:
+
+    <dc:relation>
+        info:eu-repo/grantAgreement/EPSRC//EP%2FK023195%2F1///
+    </dc:relation>
 
 # rioxx-version_of_record-casrai-ja_doi
 
-Applies only if VoR value is a DOI
+Use pattern matching to determine if the rioxx:version_of_record is a DOI and if so, map it to casrai:ja_doi.
+
+## Examples
+
+    <rioxxterms:version_of_record>
+        http://dx.doi.org/10.1006/jmbi.1995.0238
+    </rioxxterms:version_of_record>
+
+maps to:
+
+    Journal_Article/DOI: http://dx.doi.org/10.1006/jmbi.1995.0238
 
 # rioxx-version-openaire-publication_version
 
-With vocabulary mapping
+Map the rioxx:version value to the appropriate openaire:publication_version:
+
+| AO | draft |
+| SMUR | submittedVersion |
+| AM | acceptedVersion |
+| P | no mapping |
+| VoR | publishedVersion |
+| CVoR | updatedVersion |
+| EVoR | updatedVersion |
+| NA | no mapping |
+
+## Examples
+
+   <rioxxterms:version>AM</rioxxterms:version>
+
+maps to:
+
+    <dc:type>info:eu-repo/semantics/acceptedVersion</dc:type>
