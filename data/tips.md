@@ -99,15 +99,45 @@ could be combined into:
 
 # casrai-app_author_id-rioxx-author
 
-Build HTTP URI
+Use the casrai:Author Name:, casrai:Author ID: and possibly casrai:Author ID Type: to construct an identifier for the rioxx:Author: field, for example the following values:
+
+    Author ID: http://orcid.org/0000-0002-1395-3092
+    Author Name: Lawson, Gerald
+    Author ID Type: Person ID Types/ORCID
+
+would map to the following rioxx:author: field:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
 
 # casrai-app_author_id_type-rioxx-author
 
-Build HTTP URI
+Use the casrai:Author Name:, casrai:Author ID: and possibly casrai:Author ID Type: to construct an identifier for the rioxx:Author: field, for example the following values:
+
+    Author ID: http://orcid.org/0000-0002-1395-3092
+    Author Name: Lawson, Gerald
+    Author ID Type: Person ID Types/ORCID
+
+would map to the following rioxx:author: field:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
 
 # casrai-app_author_name-rioxx-author
 
-Name part only
+Use the casrai:Author Name:, casrai:Author ID: and possibly casrai:Author ID Type: to construct an identifier for the rioxx:Author: field, for example the following values:
+
+    Author ID: http://orcid.org/0000-0002-1395-3092
+    Author Name: Lawson, Gerald
+    Author ID Type: Person ID Types/ORCID
+
+would map to the following rioxx:author: field:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
 
 # hefce-embargo_end_date-openaire-access_level
 
@@ -380,13 +410,45 @@ Note that the DOI must be represented in its HTTP form.
 
 # rioxx-apc-casrai-apc_payment_adjustments
 
-Convert vocab to string
+Map the rioxx:APC: vocabulary value to a suitable string in casrai:Payment Adjustments:, for eexample: 
+
+    <rioxxterms:apc>
+        partially waived
+    </rioxxterms:apc>
+
+could be mapped to:
+
+    "Partially waived"
+
+or:
+
+    "APC cost partially waived by publisher"
 
 # rioxx-author-casrai-app_author_id
 
-Derive from HTTP URI
+Extract the casrai:Author ID: value from the rioxx:Author field, for example:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
+
+produces:
+
+    http://orcid.org/0000-0002-1395-3092
 
 # rioxx-author-casrai-app_author_id_type
+
+Use pattern matching to recognise an ORCID or ISNI in the rioxx:Author: field, for example:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
+
+would identify the casrai:Author ID Type: as:
+
+    Person ID Types/ORCID
+
+See http://dictionary.casrai.org/Person_ID_Types for
 
 Derive from HTTP URI
 
