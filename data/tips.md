@@ -129,9 +129,9 @@ would map to the following rioxx:author: field:
 
 Use the casrai:Author Name:, casrai:Author ID: and possibly casrai:Author ID Type: to construct an identifier for the rioxx:Author: field, for example the following values:
 
-    Author ID: http://orcid.org/0000-0002-1395-3092
-    Author Name: Lawson, Gerald
-    Author ID Type: Person ID Types/ORCID
+    Author_ID: http://orcid.org/0000-0002-1395-3092
+    Author_Name: Lawson, Gerald
+    Author_ID_Type: Person ID Types/ORCID
 
 would map to the following rioxx:author: field:
 
@@ -141,11 +141,39 @@ would map to the following rioxx:author: field:
 
 # hefce-embargo_end_date-openaire-access_level
 
-Set to embargoedAccess or openAccess (assuming open access after embargo ends)
+Use hefce:embargo_end_date to infer whether the openaire:access_level is ```openAccess``` (embargo has expired) or ```embargoedAccess```(embargo still in force).
+
+## Examples
+
+    <ali:free_to_read>
+'
+maps to:
+
+    <dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+
+    Embargo_End_Date: 2020-04-13
+
+maps to:
+
+    <dc:rights>info:eu-repo/semantics/embargoedAccess</dc:rights>
 
 # hefce-embargo_end_date-rioxx-free_to_read
 
-Assuming free to read after embargo ends
+Use hefce:embargo_end_date to infer whether the resource is rioxx:free_to_read.
+
+## Examples
+
+    <ali:free_to_read>
+'
+maps to:
+
+    <ali:free_to_read>
+
+    Embargo_End_Date: 2013-01-29
+
+maps to:
+
+    <ali:free_to_read>
 
 # hefce-free_to_read-openaire-access_level
 
@@ -521,6 +549,8 @@ produces:
 # rioxx-free_to_read-openaire-access_level
 
 The ````info:eu-repo/semantics/openAccess``` openaire:access_level can be determined from the rioxx:free_to_read element (if the resource is not Open Access it is not possible to determine its access level from rioxx:free_to_read alone).
+
+    <license_
 
 ## Examples:
 
