@@ -450,19 +450,48 @@ would identify the casrai:Author ID Type: as:
 
 See http://dictionary.casrai.org/Person_ID_Types for
 
-Derive from HTTP URI
-
 # rioxx-author-casrai-app_author_name
 
-Name part only
+Extract the casrai:Author Name: value from the rioxx:Author: field, for example:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
+
+produces:
+
+    Lawson, Gerald
 
 # rioxx-author-openaire-creator
 
-Name part only
+Extract the openaire:Creator: value from the rioxx:Author: field, for example:
+
+    <rioxxterms:author id="http://orcid.org/0000-0002-1395-3092">
+        Lawson, Gerald
+    </rioxxterms:author>
+
+produces:
+
+    <dc:creator>
+        Lawson, Gerald
+    </dc:creator>
 
 # rioxx-free_to_read-openaire-access_level
 
-The presence of an ali:free_to_read element can be used to infer that Open Access to the resource is possible, provided that the end_date attribute is not a date in the past.
+Only the openaire:access_level ```info:eu-repo/semantics/openAccess``` can be determined from the rioxx:free_to_read element (if the resource is not Open Access it is not possible to determine its access level from rioxx:free_to_read alone).
+
+## Examples:
+
+    <ali:free_to_read>
+    <ali:free_to_read start_date="2013-03-28">
+
+Both rioxx:free_to_read values map to:
+
+    <dc:rights>info:eu-repo/semantics/openAccess</dc:rights>
+
+But the following value (or the absence of a value) results in no mapping:
+
+    <ali:free_to_read start_date="2013-03-28" end_date="2014-04-30">
 
 # rioxx-license_ref-casrai-apc_licence_type
 
