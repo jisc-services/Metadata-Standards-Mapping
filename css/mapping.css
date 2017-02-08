@@ -251,3 +251,27 @@ footer p {
 .glyphicon {
     color: darkgray;
 }
+
+/* examples panel */
+.table-field-examples-schema-rioxx {
+    border-bottom: 2px solid #b90005 !important;
+}
+.table-field-examples-schema-openaire {
+    border-bottom: 2px solid #00b602 !important;
+}
+.table-field-examples-schema-casrai {
+    border-bottom: 2px solid #6a299d !important;
+}
+.table-field-examples-schema-hefce {
+    border-bottom: 2px solid #fe8b2d !important;
+}
+.table-field-examples pre {
+    white-space: pre-wrap;
+}
+.mapping-note table {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.mapping-note td {
+    padding: 5px;
+}
