@@ -1,8 +1,21 @@
 from_schema,from_field,to_schema,to_field,note,from_example_1,to_example_1,from_example_2,to_example_2,from_example_3,to_example_3,from_example_4,to_example_4
-rioxx,free_to_read,openaire,access_level,,,,,,,,,
+rioxx,free_to_read,openaire,access_level,"Open Access can be inferred from the <span class=""schema-element schema-element-rioxx"">Free to Read</span> element (if the resource is not Open Access it is not possible to determine the specific access level from <span class=""schema-element schema-element-rioxx"">Free to Read</span> alone).","<ali:free_to_read>
+","<dc:rights>
+    info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read start_date=""2013-03-28"">","<dc:rights>
+    info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read start_date=""2013-03-28"" end_date=""2014-04-30"">
+",_No mapping._,,
 rioxx,free_to_read,hefce,free_to_read,,,,,,,,,
 rioxx,license_ref,openaire,license_condition,,,,,,,,,
-rioxx,license_ref,casrai,apc_licence_type,,,,,,,,,
+rioxx,license_ref,casrai,apc_licence_type,"Use pattern matching to identify Creative Commons licenses and map them to the appropriate casrai:apc_license_type.
+
+See [casrai:apc_license_type dictionary](http://dictionary.casrai.org/Licence_Types)
+","<ali:license_ref>
+    http://creativecommons.org/licenses/by/4.0
+</ali:license_ref>
+","APC_Payment/Licence_Type: Licence Types/CC BY
+",,,,,,
 rioxx,license_ref,hefce,license_ref,,,,,,,,,
 rioxx,coverage,openaire,coverage,,,,,,,,,
 rioxx,description,openaire,description,,,,,,,,,
@@ -18,41 +31,141 @@ rioxx,title,openaire,title,,,,,,,,,
 rioxx,title,casrai,ja_article_title,,,,,,,,,
 rioxx,date_accepted,casrai,ja_final_acceptance_date,,,,,,,,,
 rioxx,date_accepted,hefce,acceptance_date,,,,,,,,,
-rioxx,apc,casrai,apc_payment_adjustments,,,,,,,,,
-rioxx,author,openaire,creator,,,,,,,,,
-rioxx,author,casrai,app_author_name,,,,,,,,,
-rioxx,author,casrai,app_author_id_type,,,,,,,,,
-rioxx,author,casrai,app_author_id,,,,,,,,,
+rioxx,apc,casrai,apc_payment_adjustments,"Map <span class=""schema-element schema-element-rioxx"">APC</span> to a suitable string. ","<rioxxterms:apc>
+    partially waived
+</rioxxterms:apc>","APC_Payment/Payment_Adjustments: Partially waived by publisher
+",,,,,,
+rioxx,author,openaire,creator,"Extract the author name from the <span class=""schema-element schema-element-rioxx"">Author ID</span> element.","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>
+","<dc:creator>
+    Lawson, Gerald
+</dc:creator>",,,,,,
+rioxx,author,casrai,app_author_name,"Extract the author name from the <span class=""schema-element schema-element-rioxx"">Author ID</span> element.","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>
+","Internal_OA_Cost_Application/Author_Name: Lawson, Gerald
+",,,,,,
+rioxx,author,casrai,app_author_id_type,"Use pattern matching to recognise an ORCID or ISNI in the <span class=""schema-element schema-element-rioxx"">Author</span> element.","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>
+","Internal_OA_Cost_Application/Author_ID_Type: Person ID Types/ORCID
+",,,,,,
+rioxx,author,casrai,app_author_id,"Extract the ``author_id`` from the <span class=""schema-element schema-element-rioxx"">Author ID</span> element.","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>
+","Internal_OA_Cost_Application/Author_ID: http://orcid.org/0000-0002-1395-3092
+",,,,,,
 rioxx,contributor,openaire,contributor,,,,,,,,,
-rioxx,project,openaire,project_identifier,,,,,,,,,
-rioxx,project,casrai,apc_source_grants,,,,,,,,,
+rioxx,project,openaire,project_identifier,"Extract the ```funder_name``` and project ID from the <span class=""schema-element schema-element-rioxx"">project</span> element to create a partial ```info:eu-repo/grantAgreement``` identifier. Use the [OpenAire list of projects](http://api.openaire.eu/oai_pmh?verb=ListRecords&set=projects&metadataPrefix=oaf) to verify the project details.","<rioxxterms:project
+    funder_name=""Engineering and Physical Sciences Research Council""
+    funder_id=""http://isni.org/isni/0000000403948681""
+>
+    EP/K023195/1
+</rioxxterms:project>
+","<dc:relation>
+    info:eu-repo/grantAgreement/EPSRC//EP%2FK023195%2F1///
+</dc:relation>",,,,,,
+rioxx,project,casrai,apc_source_grants,"Extract the project ID from the <span class=""schema-element schema-element-rioxx"">Project</span> value.","<rioxxterms:project
+    funder_name=""Engineering and Physical Sciences Research Council""
+    funder_id=""http://isni.org/isni/0000000403948681""
+>
+    EP/K023195/1
+</rioxxterms:project>","APC_Payment/Source_Grant(s): EP/K023195/1
+",,,,,,
 rioxx,publication_date,openaire,publication_date,,,,,,,,,
 rioxx,publication_date,casrai,ja_publication_date,,,,,,,,,
 rioxx,publication_date,hefce,publication_date,,,,,,,,,
 rioxx,type,openaire,publication_type,,,,,,,,,
 rioxx,type,hefce,output_type,,,,,,,,,
-rioxx,version,openaire,publication_version,,,,,,,,,
+rioxx,version,openaire,publication_version,"Map <span class=""schema-element schema-element-rioxx"">Version</span> to the appropriate version identifier:
+
+ <span class=""schema-element schema-element-rioxx"">Version</span> | <span class=""schema-element schema-element-openaire"">Publication Version</span>
+----------|--------------------
+ `AO`     | `draft`
+ `SMUR`   | `submittedVersion`
+ `AM`     | `acceptedVersion`
+ `P`      | _no mapping_
+ `VoR`    | `publishedVersion`
+ `CVoR`   | `updatedVersion`
+ `EVoR`   | `updatedVersion`
+ `NA`     | _no mapping_","<rioxxterms:version>
+    AM
+</rioxxterms:version>","<dc:type>
+    info:eu-repo/semantics/acceptedVersion
+</dc:type>`",,,,,,
 rioxx,version,hefce,version_of_deposited_file,,,,,,,,,
 rioxx,version_of_record,openaire,resource_identifier,,,,,,,,,
-rioxx,version_of_record,casrai,ja_doi,,,,,,,,,
+rioxx,version_of_record,casrai,ja_doi,"Use pattern matching to determine if the <span class=""schema-element schema-element-rioxx"">Version of Record</span> is a DOI.","<rioxxterms:version_of_record>
+    http://dx.doi.org/10.1006/jmbi.1995.0238
+</rioxxterms:version_of_record>
+",Journal_Article/DOI: http://dx.doi.org/10.1006/jmbi.1995.0238,,,,,,
 openaire,title,rioxx,title,,,,,,,,,
 openaire,title,casrai,ja_article_title,,,,,,,,,
 openaire,creator,rioxx,author,,,,,,,,,
 openaire,creator,casrai,app_author_name,,,,,,,,,
 openaire,creator,casrai,app_author_id_type,,,,,,,,,
 openaire,creator,casrai,app_author_id,,,,,,,,,
-openaire,project_identifier,rioxx,project,,,,,,,,,
-openaire,project_identifier,casrai,apc_source_grants,,,,,,,,,
-openaire,access_level,rioxx,free_to_read,,,,,,,,,
-openaire,access_level,hefce,free_to_read,,,,,,,,,
-openaire,license_condition,rioxx,license_ref,,,,,,,,,
-openaire,license_condition,casrai,apc_licence_type,,,,,,,,,
-openaire,license_condition,hefce,license_ref,,,,,,,,,
-openaire,embargo_end_date,rioxx,free_to_read,,,,,,,,,
+openaire,project_identifier,rioxx,project,"Extract the ```Funder``` and ```ProjectID``` parts from the <span class=""schema-element schema-element-openaire"">Project Identifier</span> URI.","<dc:relation>
+    info:eu-repo/grantAgreement/ARC/Future Fellowships/FT120100464
+</dc:relation>","<rioxxterms:project funder_name=""ARC"">
+   FT120100464 
+</rioxxterms:project>",,,,,,
+openaire,project_identifier,casrai,apc_source_grants,"Extract the ```ProjectID``` part from the <span class=""schema-element schema-element-openaire"">Project Identifier</span> URI.","<dc:relation>
+    info:eu-repo/grantAgreement/ARC/Future Fellowships/FT120100464
+</dc:relation>",APC_Payment/Source_Grant(s): FT120100464,,,,,,
+openaire,access_level,rioxx,free_to_read,"If the <span class=""schema-element schema-element-openaire"">Access Level</span> is ```openAccess```, create an <span class=""schema-element schema-element-hefce"">Free to Read</span> element.","<dc:rights>
+   info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read>
+",,,,,,
+openaire,access_level,hefce,free_to_read,"If the <span class=""schema-element schema-element-openaire"">Access Level</span> is ```openAccess```, create an <span class=""schema-element schema-element-hefce"">Free to Read</span> element.","<dc:rights>
+   info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read>
+",,,,,,
+openaire,license_condition,rioxx,license_ref,"Look for HTTP URIs in the <span class=""schema-element schema-element-openaire"">License Condition</span> element.
+
+_Note that a ```start_date``` must be included - in the absence of any other data use the date the mapping took place._","<dc:rights>
+    http://creativecommons.org/licenses/by-sa/2.0/uk/
+</dc:rights>","<ali:license_ref start_date=""2015-02-17"">
+    http://creativecommons.org/licenses/by-sa/2.0/uk/
+</ali:license_ref>","<dc:rights>
+    cc-by-sa, Andrew Smith
+</dc:rights>","<ali:license_ref start_date=""2015-02-17"">
+    http://creativecommons.org/licenses/by-sa/4.0<
+/ali:license_ref>",,,,
+openaire,license_condition,casrai,apc_licence_type,"Use pattern matching to try and extract a Licence Type from <span class=""schema-element schema-element-openaire"">License Condition</span>. 
+
+See [License Type dictionary](http://dictionary.casrai.org/Licence_Types)","<dc:rights>
+    http://creativecommons.org/licenses/by-sa/2.0/uk/
+</dc:rights>",APC_Payment/Licence_Type: CC-BY-SA,"<dc:rights>
+    cc-by-sa, Andrew Smith
+</dc:rights>",APC_Payment/Licence_Type: CC-BY-SA,"<dc:rights>
+    cc-by-sa, info:eu-repo/dai/nl/344568
+</dc:rights>",APC_Payment/Licence_Type: CC-BY-SA,,
+openaire,license_condition,hefce,license_ref,"Look for HTTP URIs in the <span class=""schema-element schema-element-openaire"">License Condition</span> element.
+
+_Note that a ```start_date``` must be included - in the absence of any other data use the date the mapping took place._","<dc:rights>
+    http://creativecommons.org/licenses/by-sa/2.0/uk/
+</dc:rights>","<ali:license_ref start_date=""2015-02-17"">
+    http://creativecommons.org/licenses/by-sa/2.0/uk/
+</ali:license_ref>","<dc:rights>
+    cc-by-sa, Andrew Smith
+</dc:rights>","<ali:license_ref start_date=""2015-02-17"">
+    http://creativecommons.org/licenses/by-sa/4.0<
+/ali:license_ref>",,,,
+openaire,embargo_end_date,rioxx,free_to_read,"Look for an expired <span class=""schema-element schema-element-openaire"">Embargo End Date</span>.","<dc:date>
+    info:eu-repo/date/embargoEnd/2015-12-31
+</dc:date>","<ali:free_to_read start_date=""2015-12-31"">",,,,,,
 openaire,embargo_end_date,hefce,embargo_end_date,,,,,,,,,
-openaire,embargo_end_date,hefce,free_to_read,,,,,,,,,
-openaire,alternative_identifier,casrai,ja_pmc_id,,,,,,,,,
-openaire,alternative_identifier,casrai,ja_issn,,,,,,,,,
+openaire,embargo_end_date,hefce,free_to_read,"Look for an expired <span class=""schema-element schema-element-openaire"">Embargo End Date</span>.","<dc:date>
+    info:eu-repo/date/embargoEnd/2015-12-31
+</dc:date>","<ali:free_to_read start_date=""2015-12-31"">",,,,,,
+openaire,alternative_identifier,casrai,ja_pmc_id,"Use pattern matching to identify PubMed IDs in the <span class=""schema-element schema-element-openaire"">Alternative Identifier</span> element.","<dc:relation>
+    info:eu-repo/semantics/altIdentifier/pmid/27819666
+</dc:relation>",Journal_Article/PMC_ID: 27819666,,,,,,
+openaire,alternative_identifier,casrai,ja_issn,"Use pattern matching to identify ISSNs in the <span class=""schema-element schema-element-openaire"">Alternative Identifier</span> element.","<dc:relation>
+    info:eu-repo/semantics/altIdentifier/pissn/0028-0836
+</dc:relation>",Journal_Article/ISSN: 0028-0836,,,,,,
 openaire,publication_reference,rioxx,relation,,,,,,,,,
 openaire,dataset_reference,rioxx,relation,,,,,,,,,
 openaire,subject,rioxx,subject,,,,,,,,,
@@ -65,21 +178,102 @@ openaire,publication_date,casrai,ja_publication_date,,,,,,,,,
 openaire,publication_date,hefce,publication_date,,,,,,,,,
 openaire,publication_type,rioxx,type,,,,,,,,,
 openaire,publication_type,hefce,output_type,,,,,,,,,
-openaire,publication_version,rioxx,version,,,,,,,,,
-openaire,publication_version,hefce,version_of_deposited_file,,,,,,,,,
+openaire,publication_version,rioxx,version,"Map the <span class=""schema-element schema-element-openaire"">Publication Version</span> to an approppriate version identifier.
+
+<span class=""schema-element schema-element-openair"">Publication Version</span> | <span class=""schema-element schema-element-rioxx"">Version</span>
+|-|-|
+``draft`` | ``AO``
+``submittedVersion`` | ``SMUR``
+``acceptedVersion`` | ``AM``
+``publishedVersion`` | ``VoR``
+``updatedVersion`` | ``CvoR``","<dc:type>
+    info:eu-repo/semantics/acceptedVersion
+</dc:type>
+","<rioxxterms:version>
+    AM
+</rioxxterms:version>",,,,,,
+openaire,publication_version,hefce,version_of_deposited_file,"Map the <span class=""schema-element schema-element-openaire"">Publication Version</span> to an approppriate version identifier.
+
+<span class=""schema-element schema-element-openair"">Publication Version</span> | <span class=""schema-element schema-element-hefce"">Version of Deposited File</span>
+|-|-|
+``draft`` | ``AO``
+``submittedVersion`` | ``SMUR``
+``acceptedVersion`` | ``AM``
+``publishedVersion`` | ``VoR``
+``updatedVersion`` | ``CvoR``","<dc:type>
+    info:eu-repo/semantics/acceptedVersion
+</dc:type>
+","<rioxxterms:version>
+    AM
+</rioxxterms:version>",,,,,,
 openaire,format,rioxx,format,,,,,,,,,
-openaire,resource_identifier,rioxx,version_of_record,,,,,,,,,
-openaire,resource_identifier,casrai,ja_pmc_id,,,,,,,,,
-openaire,resource_identifier,casrai,ja_doi,,,,,,,,,
-openaire,resource_identifier,casrai,ja_issn,,,,,,,,,
+openaire,resource_identifier,rioxx,version_of_record,"Look for a DOI in the <span class=""schema-element schema-element-openaire"">Resource Identifier</span> elements.","<dc:identifier>
+    http://hdl.handle.net/1234/5628
+</dc:identifier>
+<dc:identifier>
+    urn:isbn:123456789
+</dc:identifier>
+<dc:identifier>
+    info:doi:10.1006/jmbi.1995.0238
+</dc:identifier>
+","<rioxxterms:version_of_record>
+    http://dx.doi.org/10.1006/jmbi.1995.0238
+</rioxxterms:version_of_record>
+",,,,,,
+openaire,resource_identifier,casrai,ja_pmc_id,"Look for a PubMed URL in the <span class=""schema-element schema-element-openaire"">Resource Identifier</span> elements.","<dc:identifier>
+    https://www.ncbi.nlm.nih.gov/pubmed/27818134
+</dc:identifier>
+<dc:identifier>
+    urn:issn:0028-0836
+</dc:identifier>
+<dc:identifier>
+    info:doi:10-123456789
+</dc:identifier>
+","Journal_Article/PMC_ID: 27818134
+",,,,,,
+openaire,resource_identifier,casrai,ja_doi,"Look for a DOI in the <span class=""schema-element schema-element-openaire"">Resource Identifier</span> elements.","<dc:identifier>
+    http://hdl.handle.net/1234/5628
+</dc:identifier>
+<dc:identifier>
+    urn:isbn:123456789
+</dc:identifier>
+<dc:identifier>
+    info:doi:10-123456789
+</dc:identifier>",Journal_Article/DOI:10-123456789,,,,,,
+openaire,resource_identifier,casrai,ja_issn,"Look for an ISSN in the <span class=""schema-element schema-element-openaire"">Resource Identifier</span> elements.","<dc:identifier>
+    http://hdl.handle.net/1234/5628
+</dc:identifier>
+<dc:identifier>
+    urn:issn:0028-0836
+</dc:identifier>
+<dc:identifier>
+    info:doi:10-123456789
+</dc:identifier>
+","Journal_Article/ISSN: 0028-0836
+",,,,,,
 openaire,source,rioxx,source,,,,,,,,,
 openaire,language,rioxx,language,,,,,,,,,
 openaire,relation,rioxx,relation,,,,,,,,,
 openaire,coverage,rioxx,coverage,,,,,,,,,
 casrai,app_author_name,openaire,creator,,,,,,,,,
-casrai,app_author_name,rioxx,author,,,,,,,,,
-casrai,app_author_id_type,rioxx,author,,,,,,,,,
-casrai,app_author_id,rioxx,author,,,,,,,,,
+casrai,app_author_name,rioxx,author,"Combine the <span class=""schema-element schema-element-casrai"">Author Name</span>, <span class=""schema-element schema-element-casrai"">Author ID</span>, and possibly <span class=""schema-element schema-element-casrai"">Author ID Type</span> into an <span class=""schema-element schema-element-rioxx"">Author</span> field.","Internal_OA_Cost_Application/Author_ID: http://orcid.org/0000-0002-1395-3092
+Internal_OA_Cost_Application/Author_Name: Lawson, Gerald
+Internal_OA_Cost_Application/Author_ID_Type: Person ID Types/ORCID
+","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>",,,,,,
+casrai,app_author_id_type,rioxx,author,"Combine the <span class=""schema-element schema-element-casrai"">Author Name</span>, <span class=""schema-element schema-element-casrai"">Author ID</span>, and possibly <span class=""schema-element schema-element-casrai"">Author ID Type</span> into an <span class=""schema-element schema-element-rioxx"">Author</span> field.","Internal_OA_Cost_Application/Author_ID: http://orcid.org/0000-0002-1395-3092
+Internal_OA_Cost_Application/Author_Name: Lawson, Gerald
+Internal_OA_Cost_Application/Author_ID_Type: Person ID Types/ORCID
+","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>",,,,,,
+casrai,app_author_id,rioxx,author,"Combine the <span class=""schema-element schema-element-casrai"">Author Name</span>, <span class=""schema-element schema-element-casrai"">Author ID</span>, and possibly <span class=""schema-element schema-element-casrai"">Author ID Type</span> into an <span class=""schema-element schema-element-rioxx"">Author</span> field.","Internal_OA_Cost_Application/Author_ID: http://orcid.org/0000-0002-1395-3092
+Internal_OA_Cost_Application/Author_Name: Lawson, Gerald
+Internal_OA_Cost_Application/Author_ID_Type: Person ID Types/ORCID
+","<rioxxterms:author id=""http://orcid.org/0000-0002-1395-3092"">
+    Lawson, Gerald
+</rioxxterms:author>",,,,,,
 casrai,ja_pmc_id,openaire,alternative_identifier,,,,,,,,,
 casrai,ja_doi,rioxx,version_of_record,,,,,,,,,
 casrai,ja_doi,openaire,resource_identifier,,,,,,,,,
@@ -93,8 +287,41 @@ casrai,ja_final_acceptance_date,hefce,acceptance_date,,,,,,,,,
 casrai,ja_publication_date,rioxx,publication_date,,,,,,,,,
 casrai,ja_publication_date,openaire,publication_date,,,,,,,,,
 casrai,ja_publication_date,hefce,publication_date,,,,,,,,,
-casrai,apc_licence_type,rioxx,license_ref,,,,,,,,,
-casrai,apc_licence_type,openaire,license_condition,,,,,,,,,
+casrai,apc_licence_type,rioxx,license_ref,"Map the <span class=""schema-element schema-element-casrai"">Licence Type</span> value to a Creative Commons URL:
+
+<span class=""schema-element schema-element-casrai"">Licence Type</span> | <span class=""schema-element schema-element-rioxx"">License Ref</span>
+|-|-|
+``CC_BY`` | ``http://creativecommons.org/licenses/by/4.0/``
+``CC_BY-NC`` | ``http://creativecommons.org/licenses/by-nc/4.0/``
+``CC_BY-NC-ND`` | ``http://creativecommons.org/licenses/by-nc-nd/4.0/``
+``CC_BY-NC-SA`` | ``http://creativecommons.org/licenses/by-nc-sa/4.0/``
+``CC_BY-ND`` | ``http://creativecommons.org/licenses/by-nd/4.0/``
+``CC_BY-SA`` | ``http://creativecommons.org/licenses/by-sa/4.0/``
+``CC0`` | ``https://creativecommons.org/publicdomain/zero/1.0/``
+``Unknown`` | _no mapping_
+
+See [CASRAI Licence Types dictionary](http://dictionary.casrai.org/Licence_Types)
+
+_Note that a ```start_date``` must be included - in the absence of any other data use the date the mapping took place._",License Type: Licence_Types/CC_BY-NC-ND,"<ali:license_ref start_date=""2016-06-05"">
+    http://creativecommons.org/licenses/by-nc-nd/4.0/
+</ali:license_ref>
+",,,,,,
+casrai,apc_licence_type,openaire,license_condition,"Map the <span class=""schema-element schema-element-casrai"">Licence Type</span> value to a Creative Commons URL:
+
+<span class=""schema-element schema-element-casrai"">Licence Type</span> | <span class=""schema-element schema-element-openaire"">License Condition</span>
+|-|-|
+``CC_BY`` | ``http://creativecommons.org/licenses/by/4.0/``
+``CC_BY-NC`` | ``http://creativecommons.org/licenses/by-nc/4.0/``
+``CC_BY-NC-ND`` | ``http://creativecommons.org/licenses/by-nc-nd/4.0/``
+``CC_BY-NC-SA`` | ``http://creativecommons.org/licenses/by-nc-sa/4.0/``
+``CC_BY-ND`` | ``http://creativecommons.org/licenses/by-nd/4.0/``
+``CC_BY-SA`` | ``http://creativecommons.org/licenses/by-sa/4.0/``
+``CC0`` | ``https://creativecommons.org/publicdomain/zero/1.0/``
+``Unknown`` | _no mapping_
+
+See [CASRAI Licence Types dictionary](http://dictionary.casrai.org/Licence_Types)",License Type: Licence_Types/CC_BY-NC-ND,"<dc:rights>
+    http://creativecommons.org/licenses/by-nc-nd/4.0/
+</dc:rights>",,,,,,
 casrai,apc_licence_type,hefce,license_ref,"Map the <span class=""schema-element schema-element-casrai"">Licence Type</span> value to a Creative Commons URL:
 
 <span class=""schema-element schema-element-casrai"">Licence Type</span> | <span class=""schema-element schema-element-hefce"">License Ref</span>
@@ -111,10 +338,27 @@ casrai,apc_licence_type,hefce,license_ref,"Map the <span class=""schema-element 
 See [CASRAI Licence Types dictionary](http://dictionary.casrai.org/Licence_Types)",License Type: Licence_Types/CC_BY-NC-ND,"<dc:rights>
     http://creativecommons.org/licenses/by-nc-nd/4.0/
 </dc:rights>",,,,,,
-casrai,apc_payment_adjustments,rioxx,apc,,,,,,,,,
-casrai,apc_source_funds,rioxx,project,,,,,,,,,
-casrai,apc_source_grants,openaire,project_identifier,,,,,,,,,
-casrai,apc_source_grants,rioxx,project,,,,,,,,,
+casrai,apc_payment_adjustments,rioxx,apc,"Use pattern matching to try and covert <span class=""schema-element schema-element-casrai"">Payment Adjustments</span> into an allowable <span class=""schema-element schema-element-casrai"">Payment Adjustments</span> value.",APC_Payment/Payment_Adjustments: The APC cost was partially waived by the publisher,"<rioxxterms:apc>
+    partially waived
+</rioxxterms:apc>",,,,,,
+casrai,apc_source_funds,rioxx,project,"Combine <span class=""schema-element schema-element-casrai"">Source Fund(s)</span> and <span class=""schema-element schema-element-casrai"">Source Grants(s)</span> into a <span class=""schema-element schema-element-rioxx"">Project</span> element.","APC_Payment/Source_Fund(s): ARC
+APC_Payment/Source_Grant(s): FT120100464
+","<rioxxterms:project
+    funder_name=""ARC"">
+    FT120100464
+</rioxxterms:project>
+",,,,,,
+casrai,apc_source_grants,openaire,project_identifier,"Use <span class=""schema-element schema-element-casrai"">Source Grant(s)</span> to build an [OpenAire Grant Agreement identifier](https://wiki.surfnet.nl/display/standards/info-eu-repo#info-eu-repo-GrantAgreementIdentifiers), using the [OpenAire authority list](http://api.openaire.eu/oai_pmh?verb=ListRecords&set=projects&metadataPrefix=oaf) to fill in any missing data.",APC_Payment/Source_Grant(s): FT120100464,"<dc:relation>
+    info:eu-repo/grantAgreement/ARC/Future Fellowships/FT120100464
+</dc:relation>
+",,,,,,
+casrai,apc_source_grants,rioxx,project,"Combine <span class=""schema-element schema-element-casrai"">Source Fund(s)</span> and <span class=""schema-element schema-element-casrai"">Source Grants(s)</span> into a <span class=""schema-element schema-element-rioxx"">Project</span> element.","APC_Payment/Source_Fund(s): ARC
+APC_Payment/Source_Grant(s): FT120100464
+","<rioxxterms:project
+    funder_name=""ARC"">
+    FT120100464
+</rioxxterms:project>
+",,,,,,
 hefce,output_type,rioxx,type,,,,,,,,,
 hefce,output_type,openaire,publication_type,,,,,,,,,
 hefce,acceptance_date,rioxx,date_accepted,,,,,,,,,
