@@ -5,6 +5,7 @@ from django.conf import settings
 from django.template.loader import get_template
 from django.template import Context
 from markdown import markdown
+from markdown.extensions.tables import TableExtension
 import os.path
 
 # read schemas
@@ -25,7 +26,7 @@ with open('data/fields.csv', 'rb') as f:
         row['schema'] = schemas[sid].copy() # dereference schema
         fields[sid][row['id']] = row
 
-# read mappings
+# read mappings, notes and examples
 mappings = {}
 with open('data/mappings.csv', 'rb') as f:
     reader = csv.DictReader(f)
@@ -39,25 +40,7 @@ with open('data/mappings.csv', 'rb') as f:
         tsid = row['to_schema']
         if tsid not in mappings[fsid][ffid]:
             mappings[fsid][ffid][tsid] = []
-        mappings[fsid][ffid][tsid].append(row['to_field'])
-
-# read mapping notes
-notes = {}
-with open('data/tips.md', 'r') as f:
-    nid = ''
-    note = ''
-    for line in f:
-        if line.startswith('# '):
-            if nid:
-                notes[nid] = note
-                note = ''
-            nid = line[2:].strip()
-        else:
-            note += line
-    notes[nid] = note # last entry
-# convert to html
-for nid, note in notes.iteritems():
-    notes[nid] = markdown(note)
+        mappings[fsid][ffid][tsid].append(row)
 
 # build context for template
 data = []
@@ -76,12 +59,14 @@ for sid in schemas:
                 if tsid not in field['mappings']:
                     field['mappings'][tsid] = []
                 if tsid in mappings[sid][fid]:
-                    for tfid in mappings[sid][fid][tsid]:
-                        tfield = fields[tsid][tfid].copy()
+                    for trow in mappings[sid][fid][tsid]: # row from mappings.csv
+                        tfield = fields[tsid][trow['to_field']].copy()
+                        for trid in trow:
+                            if trid not in tfield:
+                                tfield[trid] = trow[trid]
+                            if trid == 'note':
+                                tfield['note'] = markdown(trow['note'], extensions=[TableExtension()])
                         field['mappings'][tsid].append(tfield)
-                        nid = '%s-%s-%s-%s' % (sid, fid, tsid, tfid)
-                        if nid in notes:
-                            tfield['note'] = notes[nid]
 
 # populate and print template
 TEMPLATES = [
