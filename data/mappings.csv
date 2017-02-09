@@ -5,7 +5,7 @@ rioxx,free_to_read,openaire,access_level,"Open Access can be inferred from the <
 </dc:rights>","<ali:free_to_read start_date=""2013-03-28"">","<dc:rights>
     info:eu-repo/semantics/openAccess
 </dc:rights>","<ali:free_to_read start_date=""2013-03-28"" end_date=""2014-04-30"">
-",_No mapping._,,
+",No mapping,No free_to_read element,No mapping
 rioxx,free_to_read,hefce,free_to_read,,,,,,,,,
 rioxx,license_ref,openaire,license_condition,,,,,,,,,
 rioxx,license_ref,casrai,apc_licence_type,"Use pattern matching to identify Creative Commons licenses and map them to the appropriate casrai:apc_license_type.
@@ -364,15 +364,43 @@ hefce,output_type,openaire,publication_type,,,,,,,,,
 hefce,acceptance_date,rioxx,date_accepted,,,,,,,,,
 hefce,acceptance_date,casrai,ja_final_acceptance_date,,,,,,,,,
 hefce,version_of_deposited_file,rioxx,version,,,,,,,,,
-hefce,version_of_deposited_file,openaire,publication_version,,,,,,,,,
+hefce,version_of_deposited_file,openaire,publication_version,"Map <span class=""schema-element schema-element-hefce"">Version of Deposite File</span> to the appropriate version identifier:
+
+<span class=""schema-element schema-element-hefce"">Version of Deposited File</span> | <span class=""schema-element schema-element-openaire"">Publication Version</span>
+-|-
+``AO`` | ``draft``
+``SMUR`` | ``submittedVersion``
+``AM`` | ``acceptedVersion``
+``P`` | _no mapping_
+``VoR`` | ``publishedVersion``
+``CVoR`` | ``updatedVersion``
+``EVoR`` | ``updatedVersion``
+``NA`` | _no mapping_
+","<rioxxterms:version>
+    AM
+</rioxxterms:version>","<dc:type>
+    info:eu-repo/semantics/acceptedVersion
+</dc:type>",,,,,,
 hefce,publication_date,rioxx,publication_date,,,,,,,,,
 hefce,publication_date,openaire,publication_date,,,,,,,,,
 hefce,publication_date,casrai,ja_publication_date,,,,,,,,,
-hefce,embargo_end_date,rioxx,free_to_read,,,,,,,,,
-hefce,embargo_end_date,openaire,access_level,,,,,,,,,
+hefce,embargo_end_date,rioxx,free_to_read,"Use <span class=""schema-element schema-element-hefce"">Embargo End Date</span> to infer whether the resource is free to read.",<ali:free_to_read>,<ali:free_to_read>,Embargo_End_Date: 2013-01-29,<ali:free_to_read>,,,,
+hefce,embargo_end_date,openaire,access_level,"Use <span class=""schema-element schema-element-hefce"">Embargo End Date</span> to infer whether to set the <span class=""schema-element schema-element-openaire"">Access Level</span> element to ``openAccess`` (embargo has expired) or ```embargoedAccess```(embargo still in force).",<ali:free_to_read>,"<dc:rights>
+    info:eu-repo/semantics/openAccess
+</dc:rights>",Embargo_End_Date: 2020-04-13,"<dc:rights>
+    info:eu-repo/semantics/embargoedAccess
+</dc:rights>",,,,
 hefce,embargo_end_date,openaire,embargo_end_date,,,,,,,,,
 hefce,license_ref,rioxx,license_ref,,,,,,,,,
 hefce,license_ref,openaire,license_condition,,,,,,,,,
-hefce,license_ref,casrai,apc_licence_type,,,,,,,,,
+hefce,license_ref,casrai,apc_licence_type,"Use pattern matching to identify Creative Commons licenses and map them to the appropriate <span class=""schema-element schema-element-casrai"">License Type</span>.
+
+See [License Types dictionary](http://dictionary.casrai.org/Licence_Types)","<ali:license_ref>
+    http://creativecommons.org/licenses/by/4.0
+</ali:license_ref>",APC_Payment/Licence_Type: Licence Types/CC BY,,,,,,
 hefce,free_to_read,rioxx,free_to_read,,,,,,,,,
-hefce,free_to_read,openaire,access_level,,,,,,,,,
+hefce,free_to_read,openaire,access_level,"If the resource is free to read, set the <span class=""schema-element schema-element-openaire"">Access_Level</span> to ``info:eu-repo/semantics/openAccess``. No other access levels can be determined from <span class=""schema-element schema-element-hefce"">Free to Read</span> alone.",<ali:free_to_read>,"<dc:rights>
+    info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read start_date=""2013-03-28"">","<dc:rights>
+    info:eu-repo/semantics/openAccess
+</dc:rights>","<ali:free_to_read start_date=""2013-03-28"" end_date=""2014-04-30"">",No mapping,,
