@@ -5,12 +5,6 @@
     ref #fe8b2d
 */
 
-/* fonts */
-@font-face {
-    font-family:"Stag Sans Web Light";
-    url("fonts/StagSansWeb-Light.woff") format('woff');
-}
-
 /* header */
 .header {
     background: url('images/map_66972013.png') no-repeat top center;
@@ -25,7 +19,6 @@
     padding: 10px;
     background-color: white;
     opacity: 0.9;
-    font-family: "Stag Sans Web Light","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Arial,sans-serif;
     position: absolute;
     bottom: 0;
 }
@@ -242,7 +235,6 @@ footer p {
     margin: 0px;
     background-color: white;
     opacity: 0.9;
-    font-family: "Stag Sans Web Light","HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Arial,sans-serif;
     font-size: 90%;
     font-weight: bold;
 }
