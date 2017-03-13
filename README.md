@@ -22,7 +22,7 @@ After cloning the repository:
 
 ### Prerequisites
 
-For convenience the tool uses a self-contained development environment to generate the visualisation.
+For convenience a self-contained development environment can be used to generate the visualisation.
 
 Install the following:
 
@@ -39,7 +39,7 @@ From the repository root directory;
     ./build.sh
     logout
 
-Open /path/to/metadata-mapping/build/index.html in a browser to view result.
+Open `/path/to/metadata-mapping/build/index.html` in a browser to view result.
 
 ## Deployment
 
@@ -51,4 +51,4 @@ From the repository root directory:
 
     ./deploy.sh
 
-Open https://<your_organisation>.github.io/metadata-mapping in a browser to view result.
+Open `https://<your_organisation>.github.io/metadata-mapping` in a browser to view result.
