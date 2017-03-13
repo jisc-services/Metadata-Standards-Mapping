@@ -1,4 +1,4 @@
-# Mapping UK repository-related metadata schemas
+# OA Metadata Standards Mapping
 
 A tool for visualising mappings between UK repository-related metadata schemas.
 
