@@ -15,7 +15,7 @@ The CSV data is used to generate an interactive HTML-based visualisation of the 
 After cloning the repository:
 
     mkdir build
-    git clone git@github.com:<your_organisation>/metadata-mapping.git build
+    git clone git@github.com:sherpaservices/OA-Metadata-Standards-Mapping.git build
     cd build
     git checkout gh-pages
     cd ..
@@ -39,7 +39,7 @@ From the repository root directory;
     ./build.sh
     logout
 
-Open `/path/to/metadata-mapping/build/index.html` in a browser to view result.
+Open `/path/to/OA-Metadata-Standards-Mapping/build/index.html` in a browser to view result.
 
 ## Deployment
 
@@ -51,4 +51,4 @@ From the repository root directory:
 
     ./deploy.sh
 
-Open `https://<your_organisation>.github.io/metadata-mapping` in a browser to view result.
+Open `https://sherpaservices.github.io/OA-Metadata-Standards-Mapping in a browser to view result.
