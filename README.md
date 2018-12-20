@@ -51,4 +51,4 @@ From the repository root directory:
 
     ./deploy.sh
 
-Open `https://sherpaservices.github.io/OA-Metadata-Standards-Mapping in a browser to view result.
+Open `https://jisc-services.github.io/OA-Metadata-Standards-Mapping in a browser to view result.
